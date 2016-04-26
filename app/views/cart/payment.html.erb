@@ -1,0 +1,106 @@
+<div class="container">
+
+		<div class="col-lg-8">
+			<div class="panel panel-default checkout-panel">
+  	  			<div class="panel-heading"><h4>Choose Payment Method</h4></div>
+  							<div class="form-group form-shipping">        				
+
+                    <%= form_tag @payment do |f|%>
+                    
+                    <br>        					
+        						<%= radio_button_tag(:quote, "single") %>
+                    <%= label_tag(:quote_single, "I want all my items in a single quotation") %>
+        					  <br>      					
+
+        						<%= radio_button_tag(:quote, "multiple") %>
+                    <%= label_tag(:quote_multiple, "I want my items to be quoted by their vendors") %>
+                    <br>
+
+                    <%= radio_button_tag(:quote, "creditcard") %>
+                    <%= label_tag(:creditcard, "I want to pay by Credit Card") %>
+                    <br>
+                    <%= label_tag(:creditcardname, "Name on Card", class: "col-lg-4 control-label") %>
+                    <%= text_field(:creditcardname, class: "col-lg-8 control-label")%>
+                    <%= label_tag(:creditcardnumber, "Card Number", class: "col-lg-4 control-label") %>
+                    <%= text_field(:creditcardnumber, class: "col-lg-8 control-label")  %>
+        						  <br>
+                    <div class="form-group">
+                      <%= label_tag(:creditcardexpirationdate, "Expiration Date", class: "col-lg-4 control-label") %>
+                      <div class="col-lg-8">
+                        <div class="row">
+                          <div class="col-lg-8">
+
+                            <%= select_month(Date.today, use_short_month: true, field_name: 'creditcardexpirationmonth', class: 'form-control col-lg-2',  add_month_numbers: true, prompt: 'Month') %>
+                            
+                            <%= select_year(Date.today, field_name: 'creditcardexpirationyear', prompt: 'Year', start_year: Date.today.year, class: 'form-control col-lg-2', end_year: Date.today.year + 9) %>
+                                                        
+                             
+                          </div><!--col-lg-3-->
+                        </div><!--row-->
+                      </div><!--col-lg-9-->
+                    </div><!--form-group-->
+
+                  <%= label_tag(:creditcardnumbercvs, "CVS", class: "col-lg-4 control-label") %>
+                  <%= text_field_tag(:creditcardnumbercvs) %>
+                  <br><%= submit_tag "Submit", class: "btn btn-default" %>
+                  <% end %>
+                </div><!--form-group form-shipping-->
+              </div> <!--panel panel-default checkout-panel -->
+				    </div> <!-- form-group -->
+				  
+
+		
+
+		<div class="col-lg-4">
+			<div class="panel panel-default checkout-shipping-panel">
+  	  			<div class="panel-heading"><h4>Shipping / Billing Address <%= link_to "edit", cart_shipping_path, class:"small-font" %></h4></div>
+			</div>	
+
+			<div class="panel panel-default order-summary checkout-order-summary-panel">
+  	  			<div class="panel-heading"><h4>Order Summary (15 Items) <%= link_to "edit", cart_index_path, class:"small-font" %></h4></div>
+  	  				<table class="table table-striped">
+  						<thead>
+  							<tr>
+  									<th>Product</th><th>Qty</th><th>Price</th>	
+  							</tr>
+  						</thead>
+
+  							<tr>
+  									<td>Pyrex Low Form Beaker - 5ml<br>Sold by KSFE Sdn Bhd<br>Ex-Stock</td>
+  									<td>5</td>
+  									<td>RM55.00</td>
+   							</tr>
+
+   							<tr>
+   									<td>SciLab Brand Beaker - 5ml<br>Sold by Daihan Malaysia Sdn Bhd<br>2 Weeks Delivery</td>
+   									<td>5</td>
+   									<td>RM50.00</td>
+   							</tr>
+
+   							<tr>
+   									<td>IsoTerm Low Form Beaker - 5ml<br>ABC Sdn Bhd<br>3-4 Weeks Delivery</td></td>
+   									<td>5</td>
+   									<td>RM60.00</td>
+   							</tr>
+
+   							<tr>
+   									<td colspan="2">Subtotal</td>
+   									<td>RM165.00</td>
+   							</tr>
+   							<thead>
+   								<tr>
+   									<th colspan="2">Total with GST</th>
+   									<th><span class="price">RM 174.90</span></th>
+   								</tr>
+   							</thead>
+					</table>
+  					
+				</div>
+			</div>
+			
+
+
+
+
+
+</div>

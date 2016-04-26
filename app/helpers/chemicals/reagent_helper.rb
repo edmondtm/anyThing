@@ -1,0 +1,2 @@
+module Chemicals::ReagentHelper
+end
