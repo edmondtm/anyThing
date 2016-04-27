@@ -1,3 +1,6 @@
 class Subcategory < ActiveRecord::Base
-	belongs_to :category
+	has_one :category
+	has_many :products
+	validates :subcategory_name, presence: true
+	validates :subcategory_name, uniqueness: true
 end

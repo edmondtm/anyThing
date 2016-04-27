@@ -1,4 +1,6 @@
 class Category < ActiveRecord::Base
-	belongs_to :product
-	has_one :subcategories
+	has_many :products
+	has_many :subcategories
+	validates :category_name, presence: true
+	validates :category_name, uniqueness: true
 end
