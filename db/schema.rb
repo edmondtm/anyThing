@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160425141150) do
     t.text     "product_description", limit: 65535
     t.integer  "category_id",         limit: 4
     t.integer  "subcategory_id",      limit: 4
+    t.integer  "vendor_id",           limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end

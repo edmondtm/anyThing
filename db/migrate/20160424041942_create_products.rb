@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration
     	t.text :product_description
     	t.belongs_to :category
     	t.belongs_to :subcategory
+    	t.belongs_to :vendor
     	t.timestamps
     end
   end
