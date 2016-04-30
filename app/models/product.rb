@@ -9,4 +9,11 @@ class Product < ActiveRecord::Base
 	validates :product_description, presence: true
 	validates :product_brand, presence: true
 
+	searchable do
+		text :product_brand, :product_description, :product_name    
+	end
+
 end
+
+
+  

@@ -3,13 +3,33 @@
   <div class="col-lg-3 side-nav-bar">
     
     <nav>
-        <h3>Categories</h3>
-        <h4><%= link_to "Consumables", products_categories_path %></h4>
-        <h4><%= link_to "Glasswares", products_categories_path %></h4>
-        <h4><%= link_to "Reagents", products_categories_path %></h4>
-        <h4><%= link_to "Solvents", products_categories_path %></h4>
-        <h4><%= link_to "Testing Equipments", products_categories_path %></h4>
-             
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+            <% @category.each do |category| %>
+            <div role="tab" id="heading<%= category.id %>">
+              <h4>
+                <% if @subcategory.where(category_id: category.id).count > 0 %>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= category.category_name %>" aria-expanded="false" aria-controls="collapse<%= category.category_name %>">
+                    <%= category.category_name.pluralize.titleize %>
+                  </a>
+                <% else %>
+                  <%= link_to category.category_name.pluralize.titleize, controller: "products", category: category.category_name %>
+                <% end %>
+              </h4>
+            </div>
+
+            <% if @subcategory.where(category_id: category.id).count > 0 %>
+            <div id="collapse<%= category.category_name %>" class="collapse" role="tabpanel" aria-labelledby="heading<%= category.category_name %>">
+              <div class="panel-body">
+                <% @subcategory.where(category_id: category.id).each do |subcategory| %>
+                  <h5><%= link_to subcategory.subcategory_name.pluralize.titleize, controller: "products", subcategory: subcategory.subcategory_name %></h5>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+            
+          <% end %>
+           
+        </div>    
     </nav>
   </div>
 

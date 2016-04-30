@@ -6,4 +6,9 @@ class Vendor < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+  searchable do
+		text :vendor_name     
+	end
 end

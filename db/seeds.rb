@@ -10,11 +10,13 @@ Vendor.create(vendor_company: "Kumpulan Saintifik FE Sdn Bhd")
 
 
 Category.create(category_name:"glassware")
-Subcategory.create(subcategory_name:"beaker")
-Subcategory.create(subcategory_name:"burette")
-Subcategory.create(subcategory_name:"cylinder")
-Subcategory.create(subcategory_name:"flask")
-Subcategory.create(subcategory_name:"volumetric flask")
+category = Category.first
+
+category.subcategories.create(subcategory_name:"beaker")
+category.subcategories.create(subcategory_name:"burette")
+category.subcategories.create(subcategory_name:"cylinder")
+category.subcategories.create(subcategory_name:"flask")
+category.subcategories.create(subcategory_name:"volumetric flask")
 
 
 

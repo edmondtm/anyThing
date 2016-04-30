@@ -23,15 +23,17 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
     <div class="row">
-  
+    <%= form_tag products_path, :method => :get do %>
   	<div class="col-lg-7 search-bar">
     	<div class="input-group">
-      		<input type="text" class="form-control" placeholder="Search for...">
-      		<span class="input-group-btn">
-        		<button class="btn btn-default" type="button">
+      		<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for ...." %>
+          <span class="input-group-btn">
+        		<%= button_tag "Search", class: "btn btn-default", :name => nil %>
+            <!-- <button "class="btn btn-default" type="button">
   					<span class="search-button"> Search</span>
 				    </button>
-      		</span>
+      		</span> -->
+          <% end %>
     	</div><!-- /input-group -->
   	</div><!-- /.col-lg-7 -->
 
@@ -43,9 +45,15 @@
 	</div><!-- /.row -->
 
   <div class="user-bar col-lg-12"> 
-    <span class="user-control"><a href="#">Sign In/myAccount </a></span> 
+    <span class="user-control"><%= link_to "Contact Us", contact_index_path %></span>
     <span class="user-control"><a href="#"> Track myOrder</a> </span>
-    <span class="user-control"><a href="#"> Contact Us</a></span>
+    <% if user_signed_in? %>
+      <span class="user-control"><%= link_to "Log Out", destroy_user_session_path %></span>
+    <% else %> 
+      <span class="user-control"><%= link_to "Sign In / Create Account", new_user_session_path %></span> 
+    <% end %> 
+    
+    
   </div> 
   
   

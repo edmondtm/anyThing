@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="col-lg-3 side-nav-bar">
+    
+	    <nav>
+
+	    	<h3>Categories</h3>
+	    	<% @category.each do |category| %>
+        <h4><%= link_to category.category_name.pluralize.titleize, controller: "products", category: category.category_name %></h4>
+        <% end %>     
+	        
+	        <h4><%= link_to "Beakers", products_path %></h4>
+	        <h4><%= link_to "Bottles", products_path %></h4>
+	        <h4><%= link_to "Chromatography", products_path %></h4>
+	        <h4><%= link_to "Condensers", products_path %></h4>
+	        <h4><%= link_to "Connectors", products_path %></h4>
+	        <h4><%= link_to "Desiccators", products_path %></h4>
+	        <h4><%= link_to "Flasks", products_path %></h4>
+	        <h4><%= link_to "Funnels", products_path %></h4>
+	        <h4><%= link_to "Joints", products_path %></h4>
+	        <h4><%= link_to "Tubes", products_path %></h4>
+	        <h4><%= link_to "Volumetric Flasks", products_path %></h4>
+	        
+	             
+	    </nav>
+  	</div>
+
+</div>

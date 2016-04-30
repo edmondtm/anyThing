@@ -1,22 +1,21 @@
 class ProductsController < ApplicationController
-  
-
-  def categories
-  end
-
+    
   def index
-    @categories = Products.all
-    @subcategories = Products.all
-    @search = Products.all
+    @search = Product.search do
+      fulltext params[:search]
+    end 
+
+    
+    @product = @search.results 
+
   end
 
   def show
     add_breadcrumb "Home", root_path
-    add_breadcrumb "Glasswares", products_categories_path
-    add_breadcrumb "Back to results", products_results_path
-  end
+    add_breadcrumb "Glasswares", "#"
+    add_breadcrumb "Back to results", "#"
 
-  def results
+
   end
 
   def create
@@ -28,8 +27,7 @@ class ProductsController < ApplicationController
   def delete
   end
 
-  def index
-  end
+  
 end
 
 

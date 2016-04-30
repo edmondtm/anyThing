@@ -36,8 +36,10 @@ gem 'bootstrap-will_paginate'
 gem 'cart', '~> 0.0.4'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'progress_bar'
+
 gem "breadcrumbs_on_rails"
-gem 'rmagick', '~> 2.15.4'
+
 gem 'aws-sdk', '~> 2'
 
 # Use Unicorn as the app server

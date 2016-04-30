@@ -1,39 +1,12 @@
 Rails.application.routes.draw do
 
-
-  get 'subcategories/index'
-
-  get 'subcategories/new'
-
-  get 'subcategories/create'
-
-  get 'subcategories/show'
-
-  get 'subcategories/update'
-
-  get 'subcategories/edit'
-
-  get 'subcategories/delete'
-
-  get 'categories/index'
-
-  get 'categories/new'
-
-  get 'categories/create'
-
-  get 'categories/show'
-
-  get 'categories/update'
-
-  get 'categories/edit'
-
-  get 'categories/delete'
-
+  
+  devise_for :users
   devise_for :admins
   devise_for :vendors
   get 'cart/index'
 
-  devise_for :users
+  
   get 'cart/login'
 
   get 'cart/shipping'
@@ -48,19 +21,11 @@ Rails.application.routes.draw do
 
   get 'about/index'
 
-  get 'products/categories'
-
-  get 'products/show'
-
-  get 'products/results'
-
-  get 'products/create'
-
-  get 'products/update'
-
-  get 'products/delete'
-
-  get 'products/index'
+  root 'home#index'
+  resources :products
+  resources :categories
+  resources :subcategories
+  
 
 
 
@@ -68,7 +33,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-root 'home#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
