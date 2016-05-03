@@ -10,7 +10,12 @@ class Product < ActiveRecord::Base
 	validates :product_brand, presence: true
 
 	searchable do
-		text :product_brand, :product_description, :product_name    
+		string :product_brand
+		text :product_description
+		text :product_name
+		integer :id
+		integer :category_id, :multiple => true
+		integer :vendor_id
 	end
 
 end

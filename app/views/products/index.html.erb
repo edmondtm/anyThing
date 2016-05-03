@@ -8,9 +8,16 @@
         		<a href="#">Glasswares</a>        
         		
 		        <h4>Brand</h4>
-		        <a href="#">Scilab Brand</a><br>
+
+		        <% @search.facet(:product_brand).rows.each do |facet| %>
+
+					<%= link_to facet.value , :brand => facet.value %> <br>
+
+		        <% end %>
+
+		        <!-- <a href="#">Scilab Brand</a><br>
 		        <a href="#">Pyrex</a><br>
-		        <a href="#">Duran</a><br>
+		        <a href="#">Duran</a><br> -->
 
 		        <br>
 		        <h4>Availability</h4>
@@ -21,6 +28,13 @@
 
 		        <br>
 		        <h4>Distributor</h4>
+
+		        <%= @search.facet(:vendor_id).rows.each do |facet| %>
+
+					<%= link_to Vendor.all, :vendor_id => facet.value %> <br>
+
+		        <% end %>
+
 		        <%= link_to "ABC Sdn Bhd","#" %><br>
 		        <%= link_to "Daihan Malaysia Sdn Bhd","#" %><br>
 		        <%= link_to "PTE Scientific Sdn Bhd","#" %><br>
@@ -36,7 +50,7 @@
 	<%=  @product.count %> Results Found
 	<div class="clearfix visible-lg-block"></div>
 
-	<%= @product.each do |product| %>
+	<% @product.each do |product| %>
 	<div class="col-lg-3 well results"> 
 		<%= link_to (image_tag "pyrex_low_form_beaker.jpg", alt: product.product_name, class:"results-picture"), "#" %>  
 		<h4><%= link_to product.product_name, "#" %></h4>
@@ -44,7 +58,7 @@
 		<% if Variation.where(product_id: product.id).count > 1 %>
 		<h5 class="price">RM <%= Variation.where(product_id: product.id).minimum("variation_price") %> 
 			- RM <%= Variation.where(product_id: product.id).maximum("variation_price") %> </h5>
-			
+
 		
 		<% elsif Variation.where(product_id: product.id).count == 1 %>
 		<h5 class="price">RM <%= Variation.first.variation_price %></h5>

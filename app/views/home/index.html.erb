@@ -12,7 +12,7 @@
                     <%= category.category_name.pluralize.titleize %>
                   </a>
                 <% else %>
-                  <%= link_to category.category_name.pluralize.titleize, controller: "products", category: category.category_name %>
+                  <%= link_to category.category_name.pluralize.titleize, controller: "products", search: category.category_name %>
                 <% end %>
               </h4>
             </div>
@@ -21,7 +21,7 @@
             <div id="collapse<%= category.category_name %>" class="collapse" role="tabpanel" aria-labelledby="heading<%= category.category_name %>">
               <div class="panel-body">
                 <% @subcategory.where(category_id: category.id).each do |subcategory| %>
-                  <h5><%= link_to subcategory.subcategory_name.pluralize.titleize, controller: "products", subcategory: subcategory.subcategory_name %></h5>
+                  <h5><%= link_to subcategory.subcategory_name.pluralize.titleize, controller: "products", search: subcategory.subcategory_name %></h5>
                 <% end %>
               </div>
             </div>
