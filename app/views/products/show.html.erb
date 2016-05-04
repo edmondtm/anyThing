@@ -4,7 +4,7 @@
 	<%= render_breadcrumbs :tag => :li, :separator => "" %>
 </ol>
 
-<h1>Pyrex Low Form Beaker</h1>
+<h1><%= @product.product_name  %></h1>
 
 <div class="col-lg-4 product-details-picture">
 	<%= image_tag("pyrex_low_form_beaker.jpg", alt: "Pyrex Low Form Beaker", width:"100%") %> 
@@ -12,13 +12,7 @@
 
 <div class="col-lg-4 product-details-description">
 	<h4>Description</h4>
-	<ul>
-		<li>Complies with ISO 3819 and DIN 12331</li>
-		<li>Manufactured from Pyrex borosilicate glass</li>
-		<li>Excellent thermal performance</li>
-		<li>High resistance to chemical attack</li>
-		<li>White graduations and marking spot</li>
-	</ul>
+	<%= sanitize @product.product_description, tags: %w(ul ol li h1 h2 h3 h4 h5) %>
 
 	<h4>Sold by:</h4>
 	<h5>KSFE Sdn Bhd</h5>
@@ -30,8 +24,16 @@
 <div class="col-lg-4 product-details-price well">
 
 <h4>Select Size</h4>
+  
+<%= form_for @product, url: {action: "create"} do |cart| %>
+
+    <%= cart.text_field :product_name %>
+
+
+<% end %>
+
 <select name="post[product_id]">
-  <option value="-">-</option>
+  <option value="-">-</option>  
   <option value="KSFE-1000/03M">5ml - RM 11.00</option>
   <option value="KSFE-1000/05M">10ml - RM13.00</option>
   <option value="KSFE-1000/11M">25ml - RM10.00</option>
@@ -47,6 +49,7 @@
   <option value="KSFE-1000/34D">5000ml - RM149.00</option>
   <option value="KSFE-1000/38D">10000ml - RM705.00</option>
 </select>
+
 
 <br><br><br>
 
@@ -66,6 +69,8 @@
 </select>
 
 <br><br><br>
+
+
 
 <span class="input-group-btn">
     <button class="btn btn-default" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">

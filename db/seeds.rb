@@ -260,7 +260,10 @@ product.variations.create(variation_name: "1000 ml", variation_sku: "KSFE-3151/2
 product.variations.create(variation_name: "2000 ml", variation_sku: "KSFE-3151/24", variation_price: "151.00")
 product.variations.create(variation_name: "5000 ml", variation_sku: "KSFE-3151/26", variation_price: "629.00")
 
-
+OrderStatus.create(order_status: "cart")
+OrderStatus.create(order_status: "quote")
+OrderStatus.create(order_status: "invoice")
+OrderStatus.create(order_status: "delivery")
 
 
 

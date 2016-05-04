@@ -42,6 +42,8 @@ gem "breadcrumbs_on_rails"
 
 gem 'aws-sdk', '~> 2'
 
+
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

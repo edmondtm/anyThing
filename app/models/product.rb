@@ -13,9 +13,11 @@ class Product < ActiveRecord::Base
 		string :product_brand
 		text :product_description
 		text :product_name
+		string :product_delivery
 		integer :id
-		integer :category_id, :multiple => true
 		integer :vendor_id
+		integer :category_id		
+		integer :subcategory_id		
 	end
 
 end

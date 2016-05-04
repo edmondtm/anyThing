@@ -4,41 +4,74 @@
     	
     		<nav>
     			<h4>Category</h4>
+
+        		<% @search.facet(:category_id).rows.each do |facet| %>
+
+        			<% if params[:category_id].blank? %>
+
+					<%= link_to @category.find(facet.value).category_name.pluralize.titleize , controller: "products", category_id: facet.value, subcategory_id: params[:subcategory_id], search: params[:search],product_brand: params[:product_brand] %> <span class="badge"><%= facet.count %> </span> 
+					<br>
+
+					<% else %>
+
+						<%= @category.find(facet.value).category_name.pluralize.titleize %> <%= link_to "remove" , :category_id => nil %> <br>
+
+					<% end %>
+
+		        <% end %>
+        
+
+        		<h4>Subcategory</h4>
     			 
-        		<a href="#">Glasswares</a>        
-        		
-		        <h4>Brand</h4>
+        		<% @search.facet(:subcategory_id).rows.each do |facet| %>
 
-		        <% @search.facet(:product_brand).rows.each do |facet| %>
+        			<% if params[:subcategory_id].blank? %>
 
-					<%= link_to facet.value , :brand => facet.value %> <br>
+					<%= link_to @subcategory.find(facet.value).subcategory_name.pluralize.titleize , :subcategory_id => facet.value %> <span class="badge"><%= facet.count %> </span><br>
+
+					<% else %>
+
+						<%= @subcategory.find(facet.value).subcategory_name.pluralize.titleize %> <%= link_to "remove" , :subcategory_id => nil %> <br>
+
+					<% end %>
 
 		        <% end %>
 
-		        <!-- <a href="#">Scilab Brand</a><br>
-		        <a href="#">Pyrex</a><br>
-		        <a href="#">Duran</a><br> -->
+        		
+		        <h4>Brand</h4>
+
+		       	<% @search.facet(:product_brand).rows.each do |facet| %>
+
+					<% if params[:product_brand].blank? %>
+
+		       			<%= link_to facet.value , controller: "products", product_brand: facet.value, search: params[:search],  category_id: params[:category_id], subcategory_id: params[:subcategory_id]  %> <span class="badge"><%= facet.count %> </span>
+							 <br>
+					
+						<% else %>
+
+								<%= facet.value %> <%= link_to "remove" , :product_brand => nil %> <br>
+
+		       			<% end %>
+
+			    	<% end %>
 
 		        <br>
 		        <h4>Availability</h4>
-		        <a href="#">Ex-stock</a><br>
-		        <a href="#">2-3 weeks</a><br>
-		        <a href="#">3-4 weeks</a><br>
-		        <a href="#">> 4 weeks</a><br>
+
+					Availabiligy of each variations varies <br>
+
+		        
 
 		        <br>
 		        <h4>Distributor</h4>
 
-		        <%= @search.facet(:vendor_id).rows.each do |facet| %>
+		        <% @search.facet(:vendor_id).rows.each do |facet| %>
 
-					<%= link_to Vendor.all, :vendor_id => facet.value %> <br>
+					<%= link_to facet.value , controller: "products", vendor_id: facet.value, search: params[:search], category_id: params[:category_id], subcategory_id: params[:subcategory_id], product_brand: params[:product_brand] %> <span class="badge"><%= facet.count %> </span> <br>
 
 		        <% end %>
 
-		        <%= link_to "ABC Sdn Bhd","#" %><br>
-		        <%= link_to "Daihan Malaysia Sdn Bhd","#" %><br>
-		        <%= link_to "PTE Scientific Sdn Bhd","#" %><br>
-		        <%= link_to "KSFE Sdn Bhd","#" %><br>
+		        
 		        <br>
 
 		    </nav>
@@ -47,13 +80,13 @@
 
 <div class="col-lg-9">
 	<h3>"<%= params[:search] %>"</h3>
-	<%=  @product.count %> Results Found
+	<%=  @search.total %> Results Found
 	<div class="clearfix visible-lg-block"></div>
 
 	<% @product.each do |product| %>
 	<div class="col-lg-3 well results"> 
 		<%= link_to (image_tag "pyrex_low_form_beaker.jpg", alt: product.product_name, class:"results-picture"), "#" %>  
-		<h4><%= link_to product.product_name, "#" %></h4>
+		<h4><%= link_to product.product_name, product_path(product) %></h4>
 		
 		<% if Variation.where(product_id: product.id).count > 1 %>
 		<h5 class="price">RM <%= Variation.where(product_id: product.id).minimum("variation_price") %> 
