@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
 
   
+  get 'cart/index'
+
+  get 'cart/delivery'
+
+  get 'cart/login'
+
+  get 'cart/payment'
+
+  get 'cart/shipping'
+
   devise_for :users
   devise_for :admins
   devise_for :vendors
@@ -25,6 +35,9 @@ Rails.application.routes.draw do
   resources :products
   resources :categories
   resources :subcategories
+  resources :orders
+  resources :order_items
+  resources :order_statuses
   resources :cart
   
 

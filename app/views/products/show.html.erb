@@ -25,48 +25,15 @@
 
 <h4>Select Size</h4>
   
-<%= form_for @product, url: {action: "create"} do |cart| %>
+<%= form_for @order do |cart| %>
 
-    <%= cart.text_field :product_name %>
-
-
-<% end %>
-
-<select name="post[product_id]">
-  <option value="-">-</option>  
-  <option value="KSFE-1000/03M">5ml - RM 11.00</option>
-  <option value="KSFE-1000/05M">10ml - RM13.00</option>
-  <option value="KSFE-1000/11M">25ml - RM10.00</option>
-  <option value="KSFE-1000/02M">50ml - RM10.00</option>
-  <option value="KSFE-1000/04D">100ml - RM9.00</option>
-  <option value="KSFE-1000/06D">150ml - RM12.00</option>
-  <option value="KSFE-1000/10D">250ml - RM12.00</option>
-  <option value="KSFE-1000/14D">400ml - RM14.00</option>
-  <option value="KSFE-1000/18D">600ml - RM16.00</option>
-  <option value="KSFE-1000/22D">800ml - RM24.00</option>
-  <option value="KSFE-1000/28D">1000ml - RM25.00</option>
-  <option value="KSFE-1000/30D">3000ml - RM79.00</option>
-  <option value="KSFE-1000/34D">5000ml - RM149.00</option>
-  <option value="KSFE-1000/38D">10000ml - RM705.00</option>
-</select>
-
+  <%= select_tag "variation_id", options_from_collection_for_select(@variation, "id", "option_in_show"), prompt: "Please Select"  %>
 
 <br><br><br>
 
 <h4>Select Quantity</h4>
-<select name="post[quantity]">
-  <option value="-">-</option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-  <option value="6">6</option>
-  <option value="7">7</option>
-  <option value="8">8</option>
-  <option value="8">9</option>
-  <option value="10">10</option>  
-</select>
+
+  <%= select_tag "order_quantity", options_for_select(1..20), prompt: "Enter Quantity" %>
 
 <br><br><br>
 
@@ -77,6 +44,8 @@
   		<span class="search-button"> Add to Cart</span>
 	</button>
 </span>
+
+<% end %>
 
 </div>
 

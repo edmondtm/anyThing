@@ -2,24 +2,15 @@ class CartController < ApplicationController
   def index
   end
 
-  def show
+  def delivery
   end
 
-  def new
+  def login
   end
 
-  def edit
+  def payment
   end
 
-  def create
+  def shipping
   end
-
-  def update
-  end
-
-  def destroy
-  end
-
 end
-
-

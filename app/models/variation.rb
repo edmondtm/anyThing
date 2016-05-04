@@ -7,4 +7,8 @@ class Variation < ActiveRecord::Base
 		text :variation_name     
 	end
 
+	def option_in_show
+		"#{variation_name} - #{variation_price}"
+	end
+
 end

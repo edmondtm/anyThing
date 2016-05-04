@@ -20,6 +20,7 @@ class Product < ActiveRecord::Base
 		integer :subcategory_id		
 	end
 
+	
 end
 
 

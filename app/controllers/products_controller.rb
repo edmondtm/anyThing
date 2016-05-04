@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @category = Category.find(@product.category_id).category_name.pluralize.titleize
     @variation = @product.variations.all
-    
+    @order = Order.create
 
     add_breadcrumb "Home", root_path
     add_breadcrumb @category, products_path
