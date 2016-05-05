@@ -109,12 +109,26 @@
 </div>
 
 
+<nav>
+  <ul class="pagination col-lg-12">
 
-<div class="col-lg-12 paginator">
-	<h2>Paginator Here</h2>
-</div>
+  	 
+  	
+	<li><%= link_to content_tag(:span, "&laquo", "aria-hidden" => "true"), {page: @results.previous_page} ,{"aria-label" => "Previous"} %></li>
+	    
+    
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
 
+    <li><%= link_to content_tag(:span, "&raquo", "aria-hidden" => "true"), {page: @results.next_page} ,{"aria-label" => "Next"} %></li>
 
+    
+    <!-- <li><span aria-hidden="true"><%= link_to "&raquo;", :page => @results.next_page %></span></li> -->
+  </ul>
+</nav>
 
 
 

@@ -20,7 +20,17 @@ class Product < ActiveRecord::Base
 		integer :subcategory_id		
 	end
 
-	
+	results = search.results # => Array with 30 Post elements
+
+	search.total           # => 60
+
+	results.total_pages    # => 2
+	results.first_page?    # => true
+	results.last_page?     # => false
+	results.previous_page  # => nil
+	results.next_page      # => 2
+	results.out_of_bounds? # => false
+	results.offset         # => 0
 end
 
 

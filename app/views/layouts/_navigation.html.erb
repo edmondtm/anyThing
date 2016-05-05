@@ -38,7 +38,6 @@
   	</div><!-- /.col-lg-7 -->
 
     <div class="col-lg-1">
-      
       <a href="#"><span class="glyphicon glyphicon-shopping-cart cart" aria-hidden="true"></span></a> 
     </div>
 	
@@ -46,11 +45,11 @@
 
   <div class="user-bar col-lg-12"> 
     <span class="user-control"><%= link_to "Contact Us", contact_index_path %></span>
-    <span class="user-control"><a href="#"> Track myOrder</a> </span>
+    
     <% if user_signed_in? %>
       <span class="user-control"><%= link_to "Log Out", destroy_user_session_path %></span>
     <% else %> 
-      <span class="user-control"><%= link_to "Sign In / Create Account", new_user_session_path %></span> 
+      <span class="user-control"><%= link_to "Sign In / Sign Up", new_user_session_path %></span> 
     <% end %> 
     
     

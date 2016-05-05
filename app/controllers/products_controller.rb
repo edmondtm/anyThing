@@ -15,12 +15,16 @@ class ProductsController < ApplicationController
       with(:subcategory_id,params[:subcategory_id]) if params[:subcategory_id].present?
       facet (:product_delivery)
       with(:product_delivery,params[:product_delivery]) if params[:product_delivery].present?
-      paginate :page => 1, :per_page => 12
+      paginate :page => params[:page], :per_page => 12
     end 
 
     @product = @search.results
     @category = Category.all 
     @subcategory = Subcategory.all 
+
+    @results = @search.results
+
+      
 
   end
 
@@ -33,10 +37,6 @@ class ProductsController < ApplicationController
     add_breadcrumb "Home", root_path
     add_breadcrumb @category, products_path
     add_breadcrumb "Back to results", "#"
-
-
-
-
   end
 
   def create

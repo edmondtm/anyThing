@@ -9,6 +9,6 @@ class Vendor < ActiveRecord::Base
 
 
   searchable do
-		text :vendor_name     
+		text :vendor_company    
 	end
 end
