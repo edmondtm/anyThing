@@ -1,0 +1,13 @@
+<h1>OrderItems#create</h1>
+<p>Find me in app/views/order_items/create.html.erb</p>
+
+<% if @order.errors.any? %>
+	<ul>	
+		<% @order.errors.full_messages.each do |msg| %>
+
+		<li><%= msg %></li>
+	 
+	 	<% end %>
+
+	</ul>
+<% end %>

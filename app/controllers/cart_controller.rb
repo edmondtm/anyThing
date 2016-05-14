@@ -1,5 +1,10 @@
 class CartController < ApplicationController
+ 
   def index
+  end
+
+  def show
+    @order_items = current_order.order_items
   end
 
   def delivery
@@ -13,4 +18,5 @@ class CartController < ApplicationController
 
   def shipping
   end
+
 end

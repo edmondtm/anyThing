@@ -4,7 +4,7 @@
 	<%= render_breadcrumbs :tag => :li, :separator => "" %>
 </ol>
 
-<h1><%= @product.product_name  %></h1>
+<h1 id="product_name"><%= @product.product_name  %></h1>
 
 <div class="col-lg-4 product-details-picture">
 	<%= image_tag("pyrex_low_form_beaker.jpg", alt: "Pyrex Low Form Beaker", width:"100%") %> 
@@ -23,27 +23,32 @@
 
 <div class="col-lg-4 product-details-price well">
 
-<h4>Select Size</h4>
+<h4 id="options">Select Options</h4>
   
-<%= form_for @order do |cart| %>
+<%= form_for @order_item do |cart| %>
 
-  <%= select_tag "variation_id", options_from_collection_for_select(@variation, "id", "option_in_show"), prompt: "Please Select"  %>
-
-<br><br><br>
-
-<h4>Select Quantity</h4>
-
-  <%= select_tag "order_quantity", options_for_select(1..20), prompt: "Enter Quantity" %>
+	<%= select_tag "order_item[variation_id]", options_from_collection_for_select(@variation, "id", "option_in_show"), prompt: "Please Select"  %>
 
 <br><br><br>
 
+<h4 id="quantity">Select Quantity</h4>
+
+	<%= select_tag "order_item[order_quantity]", options_for_select(1..20), prompt: "Enter Quantity" %>
+
+<br><br><br>
+
+	<%= button_tag "Add to Cart", class: "btn btn-default" %>
 
 
+<!--
 <span class="input-group-btn">
     <button class="btn btn-default" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">
   		<span class="search-button"> Add to Cart</span>
 	</button>
-</span>
+</span> -->
+
+
+
 
 <% end %>
 
@@ -59,12 +64,13 @@
     			<div class="col-lg-4">
     				<%= image_tag("pyrex_low_form_beaker.jpg", alt: "Pyrex Low Form Beaker", width:"100%")  %>
     			</div>
+    			<%   %>
     			<div class="col-lg-8">
-    				<h4>Pyrex Low Form Beaker - 5ml</h4>
-    				<h5>Availability : <span class="availability">Ex-stock</span></h5>
-    				<h5>Sold by : <span class="sold-by">KSFE Sdn Bhd</span></h5>
-    				<h5>RM11.00</span> x 5 units</h5>
-    				<h5><span class="price">RM55.00 + RM3.30 (GST)</span></h5>
+    				<h4 id= "product_name"></h4>
+    				<h5 id= "availability">Availability : <span class="availability">Ex-stock</span></h5>
+    				<h5 id= "sold_by">Sold by : <span class="sold-by">KSFE Sdn Bhd</span></h5>
+    				<h5 id= "product_price">RM11.00</span> x 5 units</h5>
+    				<h5><span class="total_price">RM55.00 + RM3.30 (GST)</span></h5>
     			</div>
     		</div>
 
@@ -78,7 +84,7 @@
 	  						<span class="">Continue Shopping</span>
 						</button>
 						
-						<%= link_to "Check Out", cart_login_path, class: "btn btn-default check-out" %>
+						<%= link_to "Check Out", "#", class: "btn btn-default check-out" %>
 					
     		</div>
     	</div>  <!-- container -->	

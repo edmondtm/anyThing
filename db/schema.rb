@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504095418) do
+ActiveRecord::Schema.define(version: 20160509075300) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(version: 20160504095418) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "cart_items", force: :cascade do |t|
+    t.integer  "variation_id", limit: 4
+    t.integer  "quantity",     limit: 4
+    t.integer  "cart_id",      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.string   "ip_address", limit: 255
+    t.string   "session",    limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "category_name", limit: 255
     t.datetime "created_at",                null: false
@@ -38,12 +54,11 @@ ActiveRecord::Schema.define(version: 20160504095418) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.string   "order_status",       limit: 255
-    t.integer  "variation_id",       limit: 4
-    t.integer  "order_quantity",     limit: 4
-    t.decimal  "product_unit_price",             precision: 10
-    t.decimal  "subtotal",                       precision: 10
-    t.integer  "order_id",           limit: 4
+    t.integer  "variation_id",      limit: 4
+    t.integer  "order_quantity",    limit: 4
+    t.decimal  "order_unit_price",            precision: 10, scale: 2
+    t.decimal  "order_total_price",           precision: 10, scale: 2
+    t.integer  "order_id",          limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,6 +71,10 @@ ActiveRecord::Schema.define(version: 20160504095418) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "order_status_id", limit: 255
+    t.decimal  "order_subtotal",              precision: 10, scale: 2
+    t.decimal  "order_tax",                   precision: 10, scale: 2
+    t.decimal  "order_shipping",              precision: 10, scale: 2
+    t.decimal  "order_total",                 precision: 10, scale: 2
     t.string   "order_number",    limit: 255
     t.integer  "user_id",         limit: 4
     t.integer  "vendor_id",       limit: 4
@@ -122,7 +141,7 @@ ActiveRecord::Schema.define(version: 20160504095418) do
     t.string   "variation_name",     limit: 255
     t.string   "variation_sku",      limit: 255
     t.string   "variation_delivery", limit: 255
-    t.string   "variation_price",    limit: 255
+    t.decimal  "variation_price",                precision: 10, scale: 2
     t.integer  "product_id",         limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"

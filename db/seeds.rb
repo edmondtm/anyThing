@@ -6,9 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+Vendor.delete_all
 Vendor.create(vendor_company: "Kumpulan Saintifik FE Sdn Bhd")
 
-
+Category.delete_all
 Category.create(category_name:"glassware")
 category = Category.first
 
@@ -19,9 +21,10 @@ category.subcategories.create(subcategory_name:"flask")
 category.subcategories.create(subcategory_name:"volumetric flask")
 
 
-
+Product.delete_all
 Product.create(product_name: "Pyrex Low Form Beaker", product_brand: "Pyrex", product_description: "<ul><li>Complies with ISO 3819 and DIN 12331</li><li>Manufactured from Pyrex borosilicate glass</li><li>Excellent thermal performance</li><li>High resistance to chemical attack</li><li>White graduations and marking spot</li></ul>", category_id: "1", subcategory_id:"1", vendor_id:"1")
 product = Product.find(1)
+Variation.delete_all
 product.variations.create(variation_name: "5 ml", variation_sku: "KSFE-1000/03M", variation_price: "11.00")
 product.variations.create(variation_name: "10 ml", variation_sku: "KSFE-1000/05M", variation_price: "13.00")
 product.variations.create(variation_name: "25 ml", variation_sku: "KSFE-1000/11M", variation_price: "10.00")
@@ -260,10 +263,11 @@ product.variations.create(variation_name: "1000 ml", variation_sku: "KSFE-3151/2
 product.variations.create(variation_name: "2000 ml", variation_sku: "KSFE-3151/24", variation_price: "151.00")
 product.variations.create(variation_name: "5000 ml", variation_sku: "KSFE-3151/26", variation_price: "629.00")
 
-OrderStatus.create(order_status: "cart")
-OrderStatus.create(order_status: "quote")
-OrderStatus.create(order_status: "invoice")
-OrderStatus.create(order_status: "delivery")
+OrderStatus.delete_all
+OrderStatus.create(order_status: "In Progress")
+OrderStatus.create(order_status: "Placed")
+OrderStatus.create(order_status: "Shipped")
+OrderStatus.create(order_status: "Cancelled")
 
 
 

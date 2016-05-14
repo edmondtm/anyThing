@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
   namespace :vendor do
     #resources :products
     resources :orders
@@ -27,35 +33,14 @@ Rails.application.routes.draw do
   #get 'product/delete'
   #end
 
-  get 'cart/index'
-
-  get 'cart/delivery'
-
-  get 'cart/login'
-
-  get 'cart/payment'
-
-  get 'cart/shipping'
+  
 
   devise_for :users
   devise_for :admins
   devise_for :vendors
-  get 'cart/index'
-
-  
-  get 'cart/login'
-
-  get 'cart/shipping'
-
-  get 'cart/delivery'
-
-  get 'cart/payment'
-
   get 'contact/index'
 
-  get 'contact/create'
-
-  get 'about/index'
+  
 
   root 'home#index'
   resources :products
@@ -64,9 +49,15 @@ Rails.application.routes.draw do
   resources :orders
   resources :order_items
   resources :order_statuses
-  resources :cart
   
 
+  resources :cart_item
+  
+  get 'cart/index' 
+  get 'cart/delivery'
+  get 'cart/login'
+  get 'cart/payment'
+  get 'cart/shipping'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

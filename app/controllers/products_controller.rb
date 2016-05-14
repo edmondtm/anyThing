@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
     
   def index
+    @title = "Product Search"
+
     @search = Product.search do
       fulltext params[:search] do
         query_phrase_slop 2
@@ -24,18 +26,18 @@ class ProductsController < ApplicationController
 
     @results = @search.results
 
-      
-
   end
 
   def show
     @product = Product.find(params[:id])
+    @title = @product.product_name
     @category = Category.find(@product.category_id).category_name.pluralize.titleize
     @variation = @product.variations.all
-    @order = Order.create
+    @order_item = current_order.order_items.new   
+    
 
     add_breadcrumb "Home", root_path
-    add_breadcrumb @category, products_path
+    add_breadcrumb @category, products_path 
     add_breadcrumb "Back to results", "#"
   end
 
