@@ -3,7 +3,8 @@ class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :subcategory
 
-	has_many :variations	
+	has_many :variations
+	has_many :order_items	
 	belongs_to :vendor
 	validates :product_name, presence: true
 	validates :product_description, presence: true

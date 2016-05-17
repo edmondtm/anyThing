@@ -2,7 +2,7 @@
 
 		<div class="col-lg-8">
 
-			<h3>Shopping Cart</h3>	
+			<h3>Shopping Cart - <div id="items_in_cart"> items )</div></h3>	
 
 			
 
@@ -25,6 +25,36 @@
 				
 			</div>
 
+				
+ 				<% @order_item.each do |oi| %>
+ 				<% product_id = oi.product_id %>
+ 				<% variation_id = oi.variation_id %>
+				<div class="col-lg-12">
+					<hr>
+					<div class="col-lg-2">
+						<%= image_tag("pyrex_low_form_beaker.jpg", alt: "Scilab-brand Beaker", width: "100%"  ) %>
+					</div>
+					<div class="col-lg-6">
+						
+					<h4> <%= @product.find(?) [params: oi.product_id] %>  - <%= oi.variation_id %></h4>
+					
+					<h5>Sold by: KSFE Sdn Bhd	</h5>
+					<%= link_to "Delete","#" %>
+					</div>
+					<div class="col-lg-2">
+					<h5>RM 5.99</h5>
+
+					</div>
+					<div class="col-lg-2">
+					<%= select(:order_items, :order_quantity, [1,2,3,4,5,6,7,8,9,10]) %>   
+					</div>
+
+				</div>
+				<% end %>
+				<hr>
+
+				
+
 			<div class="col-lg-12">
 				<hr>
 				<div class="col-lg-2">
@@ -40,29 +70,7 @@
 
 				</div>
 				<div class="col-lg-2">
-				<%= select(:order, :quantity, [1,2,3,4,5,6,7,8,9,10]) %>   
-				</div>
-
-			</div>
-
-			<hr>
-
-			<div class="col-lg-12">
-				<hr>
-				<div class="col-lg-2">
-					<%= image_tag("pyrex_low_form_beaker.jpg", alt: "Scilab-brand Beaker", width: "100%"  ) %>
-				</div>
-				<div class="col-lg-6">
-				<h4>Pyrex Low Form Beaker - 5ml</h4>
-				<h5>Sold by: KSFE Sdn Bhd	</h5>
-				<%= link_to "Delete","#" %>
-				</div>
-				<div class="col-lg-2">
-				<h5>RM 5.99</h5>
-
-				</div>
-				<div class="col-lg-2">
-				<%= select(:order, :quantity, [1,2,3,4,5,6,7,8,9,10]) %>   
+				<%= select(:order_items, :order_quantity, [1,2,3,4,5,6,7,8,9,10]) %>   
 				</div>
 
 				
@@ -85,7 +93,7 @@
 
 				</div>
 				<div class="col-lg-2">
-				<%= select(:order, :quantity, [1,2,3,4,5,6,7,8,9,10]) %>   
+				<%= select(:order_items, :quantity, [1,2,3,4,5,6,7,8,9,10]) %>   
 				</div>
 
 				

@@ -1,8 +1,10 @@
 class OrderItemsController < ApplicationController
   def create
-  	binding.pry
     @order = current_order
-  	@order_item = @order.order_items.new(order_item_params)
+    #@variation_price = Variation.find(params[:variation_id]).variation_price
+    @order_item = @order.order_items.new(order_item_params)
+
+    binding.pry
   	if @order.save
       render :create
       session[:order_id] = @order.id
@@ -28,7 +30,6 @@ class OrderItemsController < ApplicationController
 
   private
   	def order_item_params
-  		params.require(:order_item).permit(:variation_id, :order_quantity)
-  		
-  	end
+    		params.require(:order_item).permit(:product_id, :product_name, :variation_id, :variation_name, :order_quantity, :variation_price)
+    end
 end

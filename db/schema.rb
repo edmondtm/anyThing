@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509075300) do
+ActiveRecord::Schema.define(version: 20160516181230) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -56,11 +56,15 @@ ActiveRecord::Schema.define(version: 20160509075300) do
   create_table "order_items", force: :cascade do |t|
     t.integer  "variation_id",      limit: 4
     t.integer  "order_quantity",    limit: 4
-    t.decimal  "order_unit_price",            precision: 10, scale: 2
-    t.decimal  "order_total_price",           precision: 10, scale: 2
+    t.decimal  "order_unit_price",              precision: 10, scale: 2
+    t.decimal  "order_total_price",             precision: 10, scale: 2
     t.integer  "order_id",          limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id",        limit: 4
+    t.string   "product_name",      limit: 255
+    t.string   "variation_name",    limit: 255
+    t.decimal  "variation_price",               precision: 10
   end
 
   create_table "order_statuses", force: :cascade do |t|

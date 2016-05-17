@@ -1,8 +1,31 @@
 class OrderItem < ActiveRecord::Base
 	belongs_to :order
 	belongs_to :variation
-	#validates :order_id, presence: true
-	#validates :order_quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+	belongs_to :product
+	
+	validates :order_id, presence: true
+	validates :order_quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+	validates :product_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
+	validates :variation_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
+	
+	before_save :update_variation_price
+
+	def update_variation_price
+		self.variation_price = variation.variation_price
+	end
+
+	def update_product_name
+		self.product_name = product.product_name
+	end
+
+	def update_variation_name
+		self.variation_name = variation.variation_name
+	end
+	
+	
+
+
+
 	# validates :subtotal, presence: true
 
 	#validate :product_present

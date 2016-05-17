@@ -4,7 +4,6 @@ class CreateOrderItems < ActiveRecord::Migration
       
       	t.belongs_to :variation
       	t.integer :order_quantity
-      	t.decimal :order_unit_price, :precision => 10, :scale => 2
       	t.decimal :order_total_price, :precision => 10, :scale => 2
       	t.belongs_to :order
       t.timestamps 
