@@ -2,7 +2,18 @@
 
 		<div class="col-lg-8">
 
-			<h3>Shopping Cart - <div id="items_in_cart"> items )</div></h3>	
+			<h3>Shopping Cart - <% if @order_item.count > 0 %> 
+				<%= @order_item.count %> 
+					<% if @order_item.count > 1 %>
+						items
+					<% else %>
+						item
+					<% end %>
+				<% else %> 
+				Empty 
+				<% end %>
+
+			</h3>	
 
 			
 
@@ -25,10 +36,7 @@
 				
 			</div>
 
-				
- 				<% @order_item.each do |oi| %>
- 				<% product_id = oi.product_id %>
- 				<% variation_id = oi.variation_id %>
+			<% @order_item.each do |oi| %>	
 				<div class="col-lg-12">
 					<hr>
 					<div class="col-lg-2">
@@ -36,94 +44,25 @@
 					</div>
 					<div class="col-lg-6">
 						
-					<h4> <%= @product.find(?) [params: oi.product_id] %>  - <%= oi.variation_id %></h4>
+					<h4> <%= link_to oi.product_name, product_path(oi.product_id) %> </h4>
 					
 					<h5>Sold by: KSFE Sdn Bhd	</h5>
-					<%= link_to "Delete","#" %>
+					<%= link_to "Delete", order_item_path(oi.id), method: :delete, data: { confirm: 'Are you sure ?' }  %>
 					</div>
 					<div class="col-lg-2">
-					<h5>RM 5.99</h5>
+					<h5>RM <%= oi.variation_price%></h5>
 
 					</div>
 					<div class="col-lg-2">
-					<%= select(:order_items, :order_quantity, [1,2,3,4,5,6,7,8,9,10]) %>   
+					<%= select_tag "order_item[order_quantity]", options_for_select(1..20, oi.order_quantity) %>
 					</div>
 
 				</div>
-				<% end %>
 				<hr>
 
-				
-
-			<div class="col-lg-12">
-				<hr>
-				<div class="col-lg-2">
-					<%= image_tag("pyrex_low_form_beaker.jpg", alt: "Scilab-brand Beaker", width: "100%"  ) %>
-				</div>
-				<div class="col-lg-6">
-				<h4>Pyrex Low Form Beaker - 5ml</h4>
-				<h5>Sold by: KSFE Sdn Bhd	</h5>
-				<%= link_to "Delete","#" %>
-				</div>
-				<div class="col-lg-2">
-				<h5>RM 5.99</h5>
-
-				</div>
-				<div class="col-lg-2">
-				<%= select(:order_items, :order_quantity, [1,2,3,4,5,6,7,8,9,10]) %>   
-				</div>
-
-				
-			</div>
+			<% end %>	
 
 			
-
-			<div class="col-lg-12">
-				<hr>
-				<div class="col-lg-2">
-					<%= image_tag("pyrex_low_form_beaker.jpg", alt: "Scilab-brand Beaker", width: "100%"  ) %>
-				</div>
-				<div class="col-lg-6">
-				<h4>Pyrex Low Form Beaker - 5ml</h4>
-				<h5>Sold by: KSFE Sdn Bhd	</h5>
-				<%= link_to "Delete","#" %>
-				</div>
-				<div class="col-lg-2">
-				<h5>RM 5.99</h5>
-
-				</div>
-				<div class="col-lg-2">
-				<%= select(:order_items, :quantity, [1,2,3,4,5,6,7,8,9,10]) %>   
-				</div>
-
-				
-			</div>
-
-			<div class="col-lg-12">
-				
-				<div class="col-lg-10 total-cart-index">
-					<h4>Sub-Total</h4>
-				</div>
-
-				<div class="col-lg-2">
-					<h4>150.00</h4>
-				</div>
-
-			</div>
-
-			<div class="col-lg-12">
-				
-				<div class="col-lg-10 total-cart-index">
-					<h4>Total with GST</h4>
-				</div>
-
-				<div class="col-lg-2">
-					<h4 class="price">158.00</h4>
-				</div>
-
-			</div>
-
-
 		</div> <!-- col-lg-8 -->
 
 		<div class="col-lg-4">
@@ -133,11 +72,14 @@
 
 	  	  		</div>
 
-	  	  		<h5>Total - RM158.00</h5>
-
-	  	  		<%= link_to "Check Out", "#", class:"btn btn-default" %>
+	  	  		<table class="table table-striped">
+	  	  		<tr><td>Subtotal</td><td><%= number_to_currency(@order.subtotal, unit: "RM ") %></td></tr>
+	  	  		<tr><td>Shipping</td><td><%= link_to "estimate shipping", "#" %> </td></tr>
+	  	  		<tr><td>GST</td><td><%= number_to_currency(@order.subtotal * 0.06, unit: "RM ") %></td></tr>
+	  	  		<tr><td>Total</td><td><%= number_to_currency(@order.subtotal * 1.06, unit: "RM ") %></td></tr>
+	  	  		</table>
+	  	  		<%= link_to "Check Out", "#", class:"btn btn-default center-block" %>
 	  	  	</div>
 	  	</div>
-
 
 </div><!-- container -->

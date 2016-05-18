@@ -9,21 +9,35 @@ class OrderItem < ActiveRecord::Base
 	validates :variation_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
 	
 	before_save :update_variation_price
+	before_save :update_product_name
+	before_save :update_variation_name
+	before_save :update_order_item_total_price
 
-	def update_variation_price
-		self.variation_price = variation.variation_price
-	end
+	after_destroy :update_subtotal
 
-	def update_product_name
-		self.product_name = product.product_name
-	end
+	private
 
-	def update_variation_name
-		self.variation_name = variation.variation_name
-	end
-	
-	
+		def update_variation_price
+			self.variation_price = variation.variation_price
+		end
 
+		def update_product_name
+			self.product_name = product.product_name
+		end
+
+		def update_variation_name
+			self.variation_name = variation.variation_name
+		end
+
+		def update_order_item_total_price
+			self.order_item_total_price = (order_quantity * variation_price)
+		end
+		
+		def update_subtotal
+			order.update_subtotal
+		end
+		
+end
 
 
 	# validates :subtotal, presence: true
@@ -66,4 +80,4 @@ class OrderItem < ActiveRecord::Base
 #  end
 
 
-end
+

@@ -2,13 +2,10 @@ class CartController < ApplicationController
  
   def index
          @title = "View Shopping Cart"
-         @session = 
          @order = Order.find(session[:order_id])
-         @order_item = @order.order_items.all
-
-          
-         #@product_name = Product.find(@cart.product_id.first).all
-         
+         @order_item = @order.order_items.all     
+    
+                 
   end
 
   def show

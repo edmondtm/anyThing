@@ -4,7 +4,7 @@
 	<%= render_breadcrumbs :tag => :li, :separator => "" %>
 </ol>
 
-<h1 id="product_name"><%= @product_name %></h1>
+<h1 id="product_name"><%= @product.product_name %></h1>
 
 <div class="col-lg-4 product-details-picture">
 	<%= image_tag("pyrex_low_form_beaker.jpg", alt: "Pyrex Low Form Beaker", width:"100%") %> 
@@ -29,13 +29,13 @@
 
 	<%= hidden_field(:order_item, :product_id, :value => params[:id]) %>
 
-	<%= select_tag "order_item[variation_id]", options_from_collection_for_select(@variation, "id", "option_in_show"), prompt: "Please Select"  %>
+	<%= select_tag "order_item[variation_id]", options_from_collection_for_select(@variation, "id", "option_in_show"), prompt: "Please Select", :required => true %>
 
 <br><br><br>
 
 <h4 id="quantity">Select Quantity</h4>
 
-	<%= select_tag "order_item[order_quantity]", options_for_select(1..20), prompt: "Enter Quantity" %>
+	<%= select_tag "order_item[order_quantity]", options_for_select(1..20), prompt: "Enter Quantity", :required => true %>
 
 <br><br><br>
 
@@ -78,7 +78,7 @@
 
     		<div class="col-lg-7">
     			<h4>My Shopping Cart (5 items)</h4>
-    			<h5>Subtotal : <span class="price">RM55.00</span></h5>
+    			<h5>Subtotal : <span class="price">@order.order_subtotal</span></h5>
     			<h5>Subtotal (including 6% GST): <span class="price">RM58.30</span></h5>
     			
 	    			

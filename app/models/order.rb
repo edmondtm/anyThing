@@ -7,21 +7,34 @@ class Order < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :order_status
 	has_many :order_items
-	#before_create :set_order_status
-	#before_save :update_subtotal
 
-	#def subtotal
-#		order_items.collect {|oi| oi.valid? ? (oi.order_quantity * oi.order_unit_price) : 0	}.sum
-#	end
+	before_create :set_order_status
+	before_save :update_subtotal
 
-#	private
-#		def set_order_status
-#			self.order_status_id = 1
-#		end
+	after_destroy :update_subtotal	
 
-#		def update_subtotal
-#			self[:subtotal] = subtotal
-#		end
+	def subtotal
+		if order_items.count > 0 
+			order_items.sum(:order_item_total_price)
+		else
+			0
+		end
+	end
+
+	def update_subtotal
+		self[:order_subtotal] = subtotal
+	end
+
+	
+
+	private
+		def set_order_status
+			self.order_status_id = 1
+		end
+
+		
+
+		
 	
 
 end
