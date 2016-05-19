@@ -2,35 +2,49 @@
 
 <div class="container">
 
-		<div class="col-lg-8">
+		<div class="col-lg-9">
 			<div class="panel panel-default checkout-panel">
   	  			<div class="panel-heading"><h4>Shipping Info</h4></div>
   							<div class="form-group form-shipping">        				
                     
                     <br>        					
-        						<%= label_tag(:order_name, "Name", class: "sr-only") %>
-        						<%= text_field(:order, :name, class: "form-control", placeholder: "Name") %>
+        						<%= label_tag(:user_name, "Name", class: "sr-only") %>
+        						<%= text_field(:order, :user_name, class: "form-control", placeholder: "Name") %>
         					  <br>      					
 
-        						<%= label_tag(:order_company, "Company/University", class: "sr-only") %>
-         						<%= text_field(:order, :company, class: "form-control", placeholder: "Company/University") %>
+        						<%= label_tag(:user_company, "Company/University", class: "sr-only") %>
+         						<%= text_field(:order, :user_company, class: "form-control", placeholder: "Company/University") %>
                     <br>
 
-        						<%= label_tag(:order_department, "Department", class: "sr-only") %>
-        						<%= text_field(:order, :department, class: "form-control", placeholder: "Department") %> 
+        						<%= label_tag(:user_department, "Department", class: "sr-only") %>
+        						<%= text_field(:order, :user_department, class: "form-control", placeholder: "Department (Optional)") %> 
         					  <br>
 
-        						<%= label_tag(:order_address, "Address", class: "sr-only") %>
-        						<%= text_area(:order, :address, class: "form-control", placeholder: "Shipping Address") %>
+        						<%= label_tag(:user_address1, "Address", class: "sr-only") %>
+        						<%= text_area(:order, :user_address1, class: "form-control", placeholder: "Shipping Address") %>
         					  <br>
+
+                                <div class="col-lg-6">
+                                <%= label_tag(:user_city, "State", class: "sr-only") %>
+                                <%= select_tag "order[user_state]", options_for_select("Putrajaya","Selangor") %>
+                                </div>
+
+
+                    <div class="col-lg-6">
+                    <%= label_tag(:user_city, "City", class: "sr-only") %>
+                    <%= text_field(:order, :user_address2, class: "form-control, city", placeholder: "City") %>
+                    </div>
+                    
+                                        
+                    <br><br>
 
         						<%= label_tag(:order_phone, "Mobile Phone", class: "sr-only") %>
-        						<%= telephone_field(:order, :phone, class: "form-control", placeholder: "Mobile Phone")%>
+        						<%= telephone_field(:order, :handphone, class: "form-control", placeholder: "Mobile Phone")%>
         					  <br>      					
         						<%= label_tag(:order_delivery_instruction, "Delivery Instruction", class: "sr-only") %>
-        						<%= text_area(:order, :delivery_instruction, class: "form-control", placeholder: "Delivery Instruction")%><br>
+        						<%= text_area(:order, :special_instruction, class: "form-control", placeholder: "Delivery Instruction")%><br>
         					                  
-                    <%= link_to "Confirm and Pay", cart_payment_path, class:"btn btn-default" %>
+                    
 
                     
                   
@@ -42,48 +56,22 @@
 
 		</div><!-- col-lg-6 -->
 
-		<div class="col-lg-4">
-			<div class="panel panel-default order-summary checkout-panel">
-  	  			<div class="panel-heading"><h4>Order Summary (15 Items)</h4></div>
-  	  				<table class="table table-striped">
-  						<thead>
-  							<tr>
-  									<th>Product</th><th>Qty</th><th>Price</th>	
-  							</tr>
-  						</thead>
+<div class="col-lg-3" id="total_payment_sidemenu">
+      <div class="panel panel-default ">
+            <div class="panel-heading">
+              <h4>Check Out</h4>
 
-  							<tr>
-  									<td>Pyrex Low Form Beaker - 5ml<br>Sold by KSFE Sdn Bhd<br>Ex-Stock</td>
-  									<td>5</td>
-  									<td>RM55.00</td>
-   							</tr>
+            </div>
 
-   							<tr>
-   									<td>SciLab Brand Beaker - 5ml<br>Sold by Daihan Malaysia Sdn Bhd<br>2 Weeks Delivery</td>
-   									<td>5</td>
-   									<td>RM50.00</td>
-   							</tr>
-
-   							<tr>
-   									<td>IsoTerm Low Form Beaker - 5ml<br>ABC Sdn Bhd<br>3-4 Weeks Delivery</td></td>
-   									<td>5</td>
-   									<td>RM60.00</td>
-   							</tr>
-
-   							<tr>
-   									<td colspan="2">Subtotal</td>
-   									<td>RM165.00</td>
-   							</tr>
-
-   							<tr>
-   									<td colspan="2">Total with GST</td>
-   									<td><span class="price">RM 174.90</span></td>
-   							</tr>
-					</table>
-  					
-				</div>
-			</div>
-			
+            <table class="table table-striped">
+            <tr><td>Subtotal</td><td><%= number_to_currency(@order.subtotal, unit: "RM ") %></td></tr>
+            <tr><td>Shipping</td><td><%= link_to "estimate shipping", "#shipping_address" %> </td></tr>
+            <tr><td>GST</td><td><%= number_to_currency(@order.subtotal * 0.06, unit: "RM ") %></td></tr>
+            <tr><td>Total</td><td><%= number_to_currency(@order.subtotal * 1.06, unit: "RM ") %></td></tr>
+            </table>
+            <%= link_to "Buy Items / Quote Me", cart_payment_path , class:"btn btn-default center-block" %>
+          </div>
+      </div>			
 
 
 

@@ -264,11 +264,33 @@ product.variations.create(variation_name: "2000 ml", variation_sku: "KSFE-3151/2
 product.variations.create(variation_name: "5000 ml", variation_sku: "KSFE-3151/26", variation_price: "629.00")
 
 OrderStatus.delete_all
-OrderStatus.create(order_status: "In Progress")
-OrderStatus.create(order_status: "Placed")
-OrderStatus.create(order_status: "Shipped")
+OrderStatus.create(order_status: "Shopping Cart")
+OrderStatus.create(order_status: "Quotation")
+OrderStatus.create(order_status: "PO Received")
+OrderStatus.create(order_status: "Billed Vendor")
+OrderStatus.create(order_status: "Received Payment")
 OrderStatus.create(order_status: "Cancelled")
 
+Country.delete_all
+Country.create(country_name: "Malaysia")
+country = Country.first
+State.delete_all
+country.states.create(state_name: "WP Putrajaya")
+country.states.create(state_name: "Johor")
+country.states.create(state_name: "Kedah")
+country.states.create(state_name: "Kelantan")
+country.states.create(state_name: "Melaka")
+country.states.create(state_name: "Negeri Sembilan")
+country.states.create(state_name: "Pahang")
+country.states.create(state_name: "Penang")
+country.states.create(state_name: "Perak")
+country.states.create(state_name: "Perlis")
+country.states.create(state_name: "Sabah")
+country.states.create(state_name: "Sarawak")
+country.states.create(state_name: "Selangor")
+country.states.create(state_name: "Terengganu")
+country.states.create(state_name: "WP Labuan")
+country.states.create(state_name: "WP Putrajaya")
 
 
 

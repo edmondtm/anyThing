@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518030244) do
+ActiveRecord::Schema.define(version: 20160519031240) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -53,10 +53,15 @@ ActiveRecord::Schema.define(version: 20160518030244) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "countries", force: :cascade do |t|
+    t.string   "country_name", limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.integer  "variation_id",           limit: 4
     t.integer  "order_quantity",         limit: 4
-    t.decimal  "order_unit_price",                   precision: 10, scale: 2
     t.decimal  "order_item_total_price",             precision: 10, scale: 2
     t.integer  "order_id",               limit: 4
     t.datetime "created_at"
@@ -74,19 +79,30 @@ ActiveRecord::Schema.define(version: 20160518030244) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "order_status_id", limit: 255
-    t.decimal  "order_subtotal",              precision: 10, scale: 2
-    t.decimal  "order_tax",                   precision: 10, scale: 2
-    t.decimal  "order_shipping",              precision: 10, scale: 2
-    t.decimal  "order_total",                 precision: 10, scale: 2
-    t.string   "order_number",    limit: 255
-    t.integer  "user_id",         limit: 4
-    t.integer  "vendor_id",       limit: 4
-    t.string   "order_validity",  limit: 255
-    t.string   "order_delivery",  limit: 255
+    t.string   "order_status_id",     limit: 255
+    t.decimal  "order_subtotal",                  precision: 10, scale: 2
+    t.decimal  "order_tax",                       precision: 10, scale: 2
+    t.decimal  "order_shipping",                  precision: 10, scale: 2
+    t.decimal  "order_total",                     precision: 10, scale: 2
+    t.string   "order_number",        limit: 255
+    t.integer  "user_id",             limit: 4
+    t.integer  "vendor_id",           limit: 4
+    t.string   "order_validity",      limit: 255
+    t.string   "order_delivery",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "ip_address",      limit: 255
+    t.string   "ip_address",          limit: 255
+    t.string   "user_name",           limit: 255
+    t.string   "user_company",        limit: 255
+    t.string   "user_department",     limit: 255
+    t.string   "user_address1",       limit: 255
+    t.string   "user_address2",       limit: 255
+    t.string   "user_city",           limit: 255
+    t.string   "user_state",          limit: 255
+    t.string   "user_country",        limit: 255
+    t.string   "special_instruction", limit: 255
+    t.string   "handphone",           limit: 255
+    t.string   "user_postcode",       limit: 255
   end
 
   create_table "products", force: :cascade do |t|
@@ -101,6 +117,13 @@ ActiveRecord::Schema.define(version: 20160518030244) do
     t.integer  "vendor_id",           limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string   "state_name", limit: 255
+    t.integer  "country_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "subcategories", force: :cascade do |t|

@@ -1,9 +1,9 @@
 class CartController < ApplicationController
  
   def index
-         @title = "View Shopping Cart"
-         @order = Order.find(session[:order_id])
-         @order_item = @order.order_items.all     
+    @title = "View Shopping Cart"
+    @order = Order.find(session[:order_id])
+    @order_item = @order.order_items.all     
     
                  
   end
@@ -19,9 +19,15 @@ class CartController < ApplicationController
   end
 
   def payment
+    @title = "Payment / Request Quotation"
+    @order = Order.find(session[:order_id])
+    @order_item = @order.order_items.all
   end
 
   def shipping
+    @title = "Shipping Information"
+    @order = Order.find(session[:order_id])
+    @order_item = @order.order_items.all
   end
 
 end

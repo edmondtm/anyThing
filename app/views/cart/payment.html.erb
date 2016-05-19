@@ -1,6 +1,6 @@
 <div class="container">
 
-		<div class="col-lg-8">
+		<div class="col-lg-9">
 			<div class="panel panel-default checkout-panel">
   	  			<div class="panel-heading"><h4>Choose Payment Method</h4></div>
   							<div class="form-group form-shipping">        				
@@ -51,52 +51,26 @@
 
 		
 
-		<div class="col-lg-4">
+		<div class="col-lg-3">
 			<div class="panel panel-default checkout-shipping-panel">
   	  			<div class="panel-heading"><h4>Shipping / Billing Address <%= link_to "edit", cart_shipping_path, class:"small-font" %></h4></div>
 			</div>	
 
-			<div class="panel panel-default order-summary checkout-order-summary-panel">
-  	  			<div class="panel-heading"><h4>Order Summary (15 Items) <%= link_to "edit", cart_index_path, class:"small-font" %></h4></div>
-  	  				<table class="table table-striped">
-  						<thead>
-  							<tr>
-  									<th>Product</th><th>Qty</th><th>Price</th>	
-  							</tr>
-  						</thead>
+			<div class="panel panel-default ">
+            <div class="panel-heading">
+              <h4>Check Out</h4>
 
-  							<tr>
-  									<td>Pyrex Low Form Beaker - 5ml<br>Sold by KSFE Sdn Bhd<br>Ex-Stock</td>
-  									<td>5</td>
-  									<td>RM55.00</td>
-   							</tr>
+            </div>
 
-   							<tr>
-   									<td>SciLab Brand Beaker - 5ml<br>Sold by Daihan Malaysia Sdn Bhd<br>2 Weeks Delivery</td>
-   									<td>5</td>
-   									<td>RM50.00</td>
-   							</tr>
-
-   							<tr>
-   									<td>IsoTerm Low Form Beaker - 5ml<br>ABC Sdn Bhd<br>3-4 Weeks Delivery</td></td>
-   									<td>5</td>
-   									<td>RM60.00</td>
-   							</tr>
-
-   							<tr>
-   									<td colspan="2">Subtotal</td>
-   									<td>RM165.00</td>
-   							</tr>
-   							<thead>
-   								<tr>
-   									<th colspan="2">Total with GST</th>
-   									<th><span class="price">RM 174.90</span></th>
-   								</tr>
-   							</thead>
-					</table>
-  					
-				</div>
-			</div>
+            <table class="table table-striped">
+            <tr><td>Subtotal</td><td><%= number_to_currency(@order.subtotal, unit: "RM ") %></td></tr>
+            <tr><td>Shipping</td><td><%= link_to "estimate shipping", "#shipping_address" %> </td></tr>
+            <tr><td>GST</td><td><%= number_to_currency(@order.subtotal * 0.06, unit: "RM ") %></td></tr>
+            <tr><td>Total</td><td><%= number_to_currency(@order.subtotal * 1.06, unit: "RM ") %></td></tr>
+            </table>
+            <%= link_to "Buy Items / Quote Me", cart_payment_path , class:"btn btn-default center-block" %>
+          </div>
+      </div>  
 			
 
 

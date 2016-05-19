@@ -1,6 +1,9 @@
 <h1>OrderItems#create</h1>
 <p>Find me in app/views/order_items/create.html.erb</p>
 
+Order :<%= @order %> <br>
+Session : <%= session[:order_id] %> <br>
+
 <% if @order.errors.any? %>
 	<ul>	
 		<% @order.errors.full_messages.each do |msg| %>
