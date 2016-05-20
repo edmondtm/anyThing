@@ -6,6 +6,7 @@ class OrderItemsController < ApplicationController
   	if @order.save
       session[:order_id] = @order.id
       flash[:notice] = "Items Successfully Added to Cart"
+      UserQuotation.user_quotation(@order).deliver
       redirect_to :back
     else
       render :create  
