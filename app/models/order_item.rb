@@ -15,6 +15,7 @@ class OrderItem < ActiveRecord::Base
 
 	after_destroy :update_subtotal
 
+		
 	private
 
 		def update_variation_price

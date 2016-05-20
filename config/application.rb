@@ -24,5 +24,6 @@ module Anything
     config.active_record.raise_in_transactional_callbacks = true
     config.action_view.sanitized_allowed_tags = ['strong', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'li', 'ul', 'li']
     config.action_view.sanitized_allowed_attributes = ['span']
+    config.active_job.queue_adapter = :delayed_job
   end
 end

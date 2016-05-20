@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.4.0)
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
@@ -66,7 +67,13 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.1)
+    daemons (1.2.3)
     debug_inspector (0.0.2)
+    delayed_job (4.1.2)
+      activesupport (>= 3.0, < 5.1)
+    delayed_job_active_record (4.1.1)
+      activerecord (>= 3.0, < 5.1)
+      delayed_job (>= 3.0, < 5)
     devise (4.0.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -97,6 +104,10 @@ GEM
       railties (>= 3.1.0)
     json (1.8.3)
     json_pure (1.8.3)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -218,10 +229,13 @@ DEPENDENCIES
   byebug
   cart (~> 0.0.4)
   coffee-rails (~> 4.1.0)
+  daemons
+  delayed_job_active_record
   devise
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-sass-rails
+  letter_opener
   mysql2
   paypal-sdk-rest
   progress_bar

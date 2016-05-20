@@ -39,6 +39,8 @@ gem 'cart', '~> 0.0.4'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'progress_bar'
+gem 'delayed_job_active_record'
+gem "daemons" 
 
 gem "breadcrumbs_on_rails"
 
@@ -63,5 +65,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem "letter_opener"
 end
 
