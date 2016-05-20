@@ -111,6 +111,10 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     options (2.3.2)
     orm_adapter (0.5.0)
+    paypal-sdk-rest (1.4.4)
+      multi_json (~> 1.0)
+      uuidtools (~> 2.1)
+      xml-simple
     pr_geohash (1.0.0)
     progress_bar (1.0.5)
       highline (~> 1.6)
@@ -190,6 +194,7 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuidtools (2.1.5)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -198,6 +203,7 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     will_paginate (3.1.0)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
@@ -217,6 +223,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-sass-rails
   mysql2
+  paypal-sdk-rest
   progress_bar
   pry (~> 0.10.3)
   rails (= 4.2.5.2)
@@ -231,4 +238,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.11.2
+   1.12.3

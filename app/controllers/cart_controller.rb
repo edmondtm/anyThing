@@ -2,7 +2,7 @@ class CartController < ApplicationController
  
   def index
     @title = "View Shopping Cart"
-    @order = Order.find(session[:order_id])
+    @order = Order.find(current_order)
     @order_item = @order.order_items.all     
     
                  
@@ -19,15 +19,24 @@ class CartController < ApplicationController
   end
 
   def payment
-    @title = "Payment / Request Quotation"
-    @order = Order.find(session[:order_id])
-    @order_item = @order.order_items.all
+    if (current_order.order_items.count > 0)
+      @title = "Payment / Request Quotation"
+      @order = current_order
+      @order_item = @order.order_items.all
+    else
+      redirect_to cart_index_path
+    end
   end
 
   def shipping
-    @title = "Shipping Information"
-    @order = Order.find(session[:order_id])
-    @order_item = @order.order_items.all
+    if (current_order.order_items.count > 0)
+      @title = "Shipping Information"
+      @order = Order.find(session[:order_id])
+      @order_item = @order.order_items.all
+      @state = State.all
+    else
+      redirect_to cart_index_path
+    end
   end
 
 end

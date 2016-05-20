@@ -92,7 +92,9 @@
 	  	  		<tr><td>GST</td><td><%= number_to_currency(@order.subtotal * 0.06, unit: "RM ") %></td></tr>
 	  	  		<tr><td>Total</td><td><%= number_to_currency(@order.subtotal * 1.06, unit: "RM ") %></td></tr>
 	  	  		</table>
+	  	  		<% if @order_item.count > 0 %>
 	  	  		<%= link_to "Go to Shipping", cart_shipping_path , class:"btn btn-default center-block" %>
+	  	  		<% end %>
 	  	  	</div>
 	  	</div>
 

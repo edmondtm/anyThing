@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'order_items/destroy'
 
   namespace :vendor do
-    #resources :products
     resources :orders
     resources :order_items
   end
@@ -16,24 +15,6 @@ Rails.application.routes.draw do
   namespace :vendor do
     get 'product/index'
   end
-
-  #namespace :vendor do
-  #get 'product/show'
-  #end
-
-  #namespace :vendor do
-  #get 'product/create'
-  #end
-
-  #namespace :vendor do
-  #get 'product/update'
-  #end
-
-  #namespace :vendor do
-  #get 'product/delete'
-  #end
-
-  
 
   devise_for :users
   devise_for :admins
@@ -51,7 +32,6 @@ Rails.application.routes.draw do
   resources :order_statuses
   
 
-  resources :cart_item
   
   get 'cart/index' 
   get 'cart/delivery'

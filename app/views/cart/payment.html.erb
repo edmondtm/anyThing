@@ -16,32 +16,7 @@
                     <%= label_tag(:quote_multiple, "I want my items to be quoted by their vendors") %>
                     <br>
 
-                    <%= radio_button_tag(:quote, "creditcard") %>
-                    <%= label_tag(:creditcard, "I want to pay by Credit Card") %>
-                    <br>
-                    <%= label_tag(:creditcardname, "Name on Card", class: "col-lg-4 control-label") %>
-                    <%= text_field(:creditcardname, class: "col-lg-8 control-label")%>
-                    <%= label_tag(:creditcardnumber, "Card Number", class: "col-lg-4 control-label") %>
-                    <%= text_field(:creditcardnumber, class: "col-lg-8 control-label")  %>
-        						  <br>
-                    <div class="form-group">
-                      <%= label_tag(:creditcardexpirationdate, "Expiration Date", class: "col-lg-4 control-label") %>
-                      <div class="col-lg-8">
-                        <div class="row">
-                          <div class="col-lg-8">
-
-                            <%= select_month(Date.today, use_short_month: true, field_name: 'creditcardexpirationmonth', class: 'form-control col-lg-2',  add_month_numbers: true, prompt: 'Month') %>
-                            
-                            <%= select_year(Date.today, field_name: 'creditcardexpirationyear', prompt: 'Year', start_year: Date.today.year, class: 'form-control col-lg-2', end_year: Date.today.year + 9) %>
-                                                        
-                             
-                          </div><!--col-lg-3-->
-                        </div><!--row-->
-                      </div><!--col-lg-9-->
-                    </div><!--form-group-->
-
-                  <%= label_tag(:creditcardnumbercvs, "CVS", class: "col-lg-4 control-label") %>
-                  <%= text_field_tag(:creditcardnumbercvs) %>
+                    
                   <br><%= submit_tag "Submit", class: "btn btn-default" %>
                   <% end %>
                 </div><!--form-group form-shipping-->
@@ -68,7 +43,7 @@
             <tr><td>GST</td><td><%= number_to_currency(@order.subtotal * 0.06, unit: "RM ") %></td></tr>
             <tr><td>Total</td><td><%= number_to_currency(@order.subtotal * 1.06, unit: "RM ") %></td></tr>
             </table>
-            <%= link_to "Buy Items / Quote Me", cart_payment_path , class:"btn btn-default center-block" %>
+            <% link_to "Buy Items / Quote Me", cart_payment_path , class:"btn btn-default center-block" %>
           </div>
       </div>  
 			

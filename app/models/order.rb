@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :order_status
 	has_many :order_items
+	has_one :state
+	has_one :country
 
 	before_create :set_order_status
 	before_save :update_subtotal
@@ -31,10 +33,5 @@ class Order < ActiveRecord::Base
 		def set_order_status
 			self.order_status_id = 1
 		end
-
-		
-
-		
-	
 
 end
