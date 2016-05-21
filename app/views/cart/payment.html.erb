@@ -1,5 +1,7 @@
 <div class="container">
 
+    <h1><%= Rails.application.routes.recognize_path(request.referrer)[:action]  %></h1>
+
 		<div class="col-lg-9">
 			<div class="panel panel-default checkout-panel">
   	  			<div class="panel-heading"><h4>Choose Payment Method</h4></div>

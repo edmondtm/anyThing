@@ -12,7 +12,6 @@ class Order < ActiveRecord::Base
 
 	before_create :set_order_status
 	before_save :update_subtotal
-
 	after_destroy :update_subtotal	
 
 	def subtotal
@@ -32,6 +31,10 @@ class Order < ActiveRecord::Base
 	private
 		def set_order_status
 			self.order_status_id = 1
+		end
+
+		def set_order_quoted
+			self.order_status_id = 2
 		end
 
 end
