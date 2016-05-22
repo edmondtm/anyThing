@@ -5,7 +5,6 @@ class OrderItemsController < ApplicationController
 
   	if @order.save
       session[:order_id] = @order.id
-      UserQuotation.delay.user_quotation(@order)
       flash[:notice] = "Items Successfully Added to Cart"
       redirect_to :back
     else

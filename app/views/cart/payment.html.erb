@@ -7,7 +7,7 @@
   	  			<div class="panel-heading"><h4>Choose Payment Method</h4></div>
   							<div class="form-group form-shipping">        				
 
-                    <%= form_tag @payment do |f|%>
+                    <%= form_for :order, url: order_path(@order) ,method: :patch do |shipping| %>
                     
                     <br>        					
         						<%= radio_button_tag(:quote, "single") %>

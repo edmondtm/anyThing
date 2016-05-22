@@ -89,12 +89,12 @@
 		<h4><%= link_to product.product_name, product_path(product) %></h4>
 		
 		<% if Variation.where(product_id: product.id).count > 1 %>
-		<h5 class="price">RM <%= Variation.where(product_id: product.id).minimum("variation_price") %> 
-			- RM <%= Variation.where(product_id: product.id).maximum("variation_price") %> </h5>
+		<h5 class="price"><%= number_to_currency(Variation.where(product_id: product.id).minimum("variation_price"), unit: "RM ") %> 
+			- <%= number_to_currency(Variation.where(product_id: product.id).maximum("variation_price"), unit: "RM ") %> </h5>
 
 		
 		<% elsif Variation.where(product_id: product.id).count == 1 %>
-		<h5 class="price">RM <%= Variation.first.variation_price %></h5>
+		<h5 class="price"><%= number_to_currency(Variation.first.variation_price, unit: "RM ") %></h5>
 		<h1> ABC </h1>
 		<% else %>
 

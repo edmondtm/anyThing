@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
 
     add_breadcrumb "Home", root_path
     add_breadcrumb @category, products_path 
-    add_breadcrumb "Back to results", "#"
+    add_breadcrumb "Back to results", request.referer
   end
 
   def create

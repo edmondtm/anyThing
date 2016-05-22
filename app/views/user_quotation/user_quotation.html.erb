@@ -1,6 +1,26 @@
-<h1>UserQuotation#user_quotation</h1>
+<h1>Single Quotation</h1>
 
-<img src="">
+<table>
+	<tr> 
+		<th>#</th>
+		<th>Description</th>
+		<th>Unit Price</th>
+		<th>Qty</th>
+		<th>Subtotal</th>
+	</tr>
+
+	<% @order_item.each do |oi| %>
+	<tr>
+		<td></td>
+		<td><%= oi.product_name %> - <%= oi.variation_name %></td>
+		<td><%= number_to_currency(oi.variation_price, unit: "RM ")%></td>
+		<td><%= oi.order_quantity %></td>
+		<td><%= number_to_currency(oi.order_item_total_price, unit: "RM ") %></td>
+	</tr>
+	<% end %>
+
+
+</table>
 
 <p>
   <%= @greeting %>, find me in app/views/user_quotation/user_quotation.html.erb
