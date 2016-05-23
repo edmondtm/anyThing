@@ -1,5 +1,5 @@
 <div class="container">
-	<%= form_for :order, url: order_path(@order) ,method: :patch do |shipping| %>
+	<%= form_for :order, url: order_path(@order), method: :patch do |shipping| %>
     <div class="col-lg-9">
 		<div class="panel panel-default checkout-panel">
   			<div class="panel-heading"><h4>Shipping Info</h4></div>
@@ -15,7 +15,10 @@
 					<%= text_field(:order, :user_department, class: "form-control", placeholder: "Department (Optional)") %> 
                     <br>
                     <%= label_tag(:user_address1, "Address", class: "sr-only") %>
-        			<%= text_area(:order, :user_address1, class: "form-control", placeholder: "Shipping Address") %>
+        			<%= text_field(:order, :user_address1, class: "form-control", placeholder: "Shipping Address 1") %>
+                    <br>
+                    <%= label_tag(:user_address1, "Address", class: "sr-only") %>
+                    <%= text_field(:order, :user_address2, class: "form-control", placeholder: "Shipping Address 2") %>
         			<br>
                     <%= label_tag(:user_city, "City", class: "sr-only") %>
                     <%= text_field(:order, :user_city, class: "form-control, city", placeholder: "City") %>
@@ -23,12 +26,14 @@
                     <%= text_field(:order, :user_postcode, class: "form-control, city", placeholder: "Postcode") %>
                     <br><br>
                     <%= select_tag "order[user_state]", options_from_collection_for_select(@state, "id", "state_name"), prompt: "Select State", :required => true, class: "form-control" %>
-                    <br><br>
+                    <br>
                     <%= label_tag(:order_phone, "Mobile Phone", class: "sr-only") %>
         			<%= telephone_field(:order, :handphone, class: "form-control", placeholder: "Mobile Phone")%>
         			<br>      					
         			<%= label_tag(:order_delivery_instruction, "Delivery Instruction", class: "sr-only") %>
-        			<%= text_area(:order, :special_instruction, class: "form-control", placeholder: "Delivery Instruction (optional)")%><br>
+        			<%= text_area(:order, :special_instruction, class: "form-control", placeholder: "Delivery Instruction (optional)")%>
+                    <br>
+                    <h5>Currently, we only deliver to Malaysia. For other countries, kindly contact us directly at +6016-3166400</h5>
         			
 		         </div> <!-- form-group -->
             </div> <!-- panel panel-default -->
@@ -43,8 +48,9 @@
             <tr><td>Shipping</td><td><%= link_to "estimate shipping", "#shipping_address" %> </td></tr>
             <tr><td>GST</td><td><%= number_to_currency(@order.subtotal * 0.06, unit: "RM ") %></td></tr>
             <tr><td>Total</td><td><%= number_to_currency(@order.subtotal * 1.06, unit: "RM ") %></td></tr>
+            <tr><td colspan="2"><%= button_tag "Buy Items / Quote Me", class:"btn btn-default center-block" %></td></tr>
             </table>
-            <%= button_tag "Buy Items / Quote Me", class:"btn btn-default center-block" %>
+            
         </div>
     </div>
     <% end %>			

@@ -6,9 +6,13 @@ class ApplicationController < ActionController::Base
   def current_order
   	if !session[:order_id].nil?
   		Order.find(session[:order_id])
-  	else
+  	  # TODO if order_status_id >1 then create another order because it means the cart have been checked out.
+    else
   		Order.create
       
   	end
   end
+
+
+
 end

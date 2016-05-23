@@ -10,14 +10,24 @@ class CartController < ApplicationController
     @order_items = current_order.order_items
   end
 
-  def delivery
+  def shipping
+    if (current_order.order_items.count > 0)
+      if user_signed_in?
+        @title = "Shipping Information"
+        @order = current_order
+        @state = State.all
+      else
+        redirect_to new_user_session_path
+      end
+    else
+      redirect_to cart_index_path
+    end
   end
 
-  def login
-  end
+
 
   def payment
-    if (current_order.order_items.count > 0)
+    if (current_order.order_items.count > 0 && user_signed_in)
       if ((Rails.application.routes.recognize_path(request.referrer)[:action]) == "shipping")
         @title = "Payment / Request Quotation"
         @order = current_order
@@ -31,14 +41,8 @@ class CartController < ApplicationController
     end
   end
 
-  def shipping
-    if (current_order.order_items.count > 0)
-      @title = "Shipping Information"
-      @order = current_order
-      @state = State.all
-    else
-      redirect_to cart_index_path
-    end
+  def after_sign_in_path_for(user) 
+      cart_shipping_path
   end
 
   

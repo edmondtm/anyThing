@@ -1,2 +1,0 @@
-module Chemicals::StandardsHelper
-end
