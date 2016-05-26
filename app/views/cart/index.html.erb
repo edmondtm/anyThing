@@ -1,6 +1,6 @@
 <div class="container">
 
-		<div class="col-lg-9">
+		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 
 			<h3>Shopping Cart - <% if @order_item.count > 0 %> 
 				<%= @order_item.count %> 
@@ -17,59 +17,56 @@
 
 			
 
-			<div class="col-lg-12">
+			<div class="col-lg-12 col-md-12 hidden-sm hidden-xs">
 				
-				<div class="col-lg-6">
+				<div class="col-lg-6 col-md-6">
 				</div>
 
-				<div class="col-lg-2">
+				<div class="col-lg-2 col-md-2">
 					<h4>Price</h4>
 				</div>
 
-				<div class="col-lg-2">
+				<div class="col-lg-2 col-md-2">
 					<h4>Quantity</h4>
 				</div>
 
-				<div class="col-lg-2">
+				<div class="col-lg-2 col-md-2">
 					<h4>Subtotal</h4>
 				</div>
 
 			</div>
 
-			<div class="col-lg-12">
-				
-			</div>
-
-			<% @order_item.each do |oi| %>	
-				<div class="col-lg-12">
+				<% @order_item.each do |oi| %>	
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
 					<hr>
-					<div class="col-lg-2">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 						<%= image_tag("pyrex_low_form_beaker.jpg", alt: "Scilab-brand Beaker", width: "100%"  ) %>
 					</div>
-					<div class="col-lg-4">
-						
-					<h4> <%= link_to product_path(oi.product_id) do %> 
-						 <%= oi.product_name %> - <%= oi.variation_name %>
-						 <% end %>
-					</h4>
 					
-					<h5>Sold by: KSFE Sdn Bhd	</h5>
-					<%= link_to "Delete", order_item_path(oi.id), method: :delete, data: { confirm: 'Are you sure ?' }  %>
+					<div class="col-lg-4 col-md-4 col-sm-2 col-xs-12">
+						<h4> <%= link_to product_path(oi.product_id) do %> 
+							 <%= oi.product_name %> - <%= oi.variation_name %>
+							 <% end %>
+						</h4>
+						
+						<h5>Sold by: KSFE Sdn Bhd</h5>
+						<%= link_to "Delete", order_item_path(oi.id), method: :delete, data: { confirm: 'Are you sure ?' }  %>
 					</div>
-					<div class="col-lg-2">
-					<h5><%= number_to_currency(oi.variation_price, unit: "RM ")%></h5>
+					
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+						<h5><%= number_to_currency(oi.variation_price, unit: "RM ")%></h5>
 					</div>
 					
 					<%= form_for :order_item, url: order_item_path(oi.id), method: :patch do |cart| %>
-					<div class="col-lg-2">
-					<%= select_tag "order_item[order_quantity]", options_for_select(1..20, oi.order_quantity) %>
-					<br><br> <%= button_tag "Update Cart", class: "btn btn-default btn-xs" %>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+						<%= select_tag "order_item[order_quantity]", options_for_select(1..20, oi.order_quantity) %>
+						<br><br> <%= button_tag "Update Cart", class: "btn btn-default btn-xs" %>
 					</div>
 
-					<div class="col-lg-2">
-					<%= number_to_currency(oi.order_item_total_price, unit: "RM ") %>
-					
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+						<%= number_to_currency(oi.order_item_total_price, unit: "RM ") %>
 					</div>
+
 					<% end %>
 				</div>
 				<hr>	
@@ -79,16 +76,15 @@
 			
 		</div> <!-- col-lg-8 -->
 
-		<div class="col-lg-3" id="total_payment_sidemenu">
+		<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" id="total_payment_sidemenu">
 			<div class="panel panel-default ">
 	  	  		<div class="panel-heading">
 	  	  			<h4>Check Out</h4>
-
 	  	  		</div>
 
 	  	  		<table class="table table-striped">
 	  	  		<tr><td>Subtotal</td><td><%= number_to_currency(@order.subtotal, unit: "RM ") %></td></tr>
-	  	  		<tr><td>Shipping</td><td><%= link_to "estimate shipping", "#shipping_address" %> </td></tr>
+	  	  		<tr><td>Shipping</td><td><%= link_to_unless((@order_item.count < 1),"estimate shipping", cart_shipping_path) %> </td></tr>
 	  	  		<tr><td>GST</td><td><%= number_to_currency(@order.subtotal * 0.06, unit: "RM ") %></td></tr>
 	  	  		<tr><td>Total</td><td><%= number_to_currency(@order.subtotal * 1.06, unit: "RM ") %></td></tr>
 	  	  		</table>

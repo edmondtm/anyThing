@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   	  # TODO if order_status_id >1 then create another order because it means the cart have been checked out.
     else
   		Order.create
-      
   	end
   end
 

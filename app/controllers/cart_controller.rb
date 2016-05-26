@@ -13,6 +13,7 @@ class CartController < ApplicationController
   def shipping
     if (current_order.order_items.count > 0)
       if user_signed_in?
+        @user = current_user
         @title = "Shipping Information"
         @order = current_order
         @state = State.all
@@ -27,11 +28,17 @@ class CartController < ApplicationController
 
 
   def payment
-    if (current_order.order_items.count > 0 && user_signed_in)
+    if (current_order.order_items.count > 0)
       if ((Rails.application.routes.recognize_path(request.referrer)[:action]) == "shipping")
-        @title = "Payment / Request Quotation"
-        @order = current_order
-        @order_item = @order.order_items.all
+        if user_signed_in?
+          @user = current_user
+          @state = State.all
+          @title = "Payment / Request Quotation"
+          @order = current_order
+          @order_item = @order.order_items.all
+        else
+          redirect_to :back
+        end
       else
         flash[:notice] = "Please confirm shipping address"
         redirect_to cart_shipping_path

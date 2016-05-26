@@ -1,7 +1,78 @@
 <div class = "container">
+    <div class="col-lg-9">
+		<div class="panel panel-default checkout-panel">
+  			<div class="panel-heading"><h4>Personal Info</h4></div>
+				<div class="form-group form-shipping">
+					<%= form_for :user, url: user_path(@user), method: :patch do |shipping| %>        				
+                    <br>
+        			<%= label_tag(:user_name, "Name", class: "sr-only") %>
+        			<%= text_field(:users, :user_name, class: "form-control", placeholder: "Name", :value => @user.user_name) %>
+        			<br>      					
+					<%= label_tag(:user_mobile, "Mobile Phone", class: "sr-only") %>
+                    <%= telephone_field(:users, :user_mobile, class: "form-control", placeholder: "Mobile Phone", :value => @user.user_mobile)%>
+                    <br>                        
+                    <%= label_tag(:user_phone, "Mobile Phone", class: "sr-only") %>
+                    <%= telephone_field(:users, :user_phone, class: "form-control", placeholder: "Phone Number", :value => @user.user_phone)%>
+                    <br>
+                    <%= label_tag(:user_company, "Company/University", class: "sr-only") %>
+					<%= text_field(:users, :user_company, class: "form-control", placeholder: "Company/University", :value => @user.user_company) %>
+                    <br>
+					<%= label_tag(:user_department, "Department", class: "sr-only") %>
+					<%= text_field(:users, :user_department, class: "form-control", placeholder: "Department (Optional)", :value => @user.user_department) %> 
+                    <br>
+                    <div class="col-lg-6">
+                    <%= label_tag(:user_shipping_address1, "Address 1", class: "sr-only") %>
+        			<%= text_field(:users, :user_shipping_address1, class: "form-control", placeholder: "Shipping Address 1", :value => @user.user_shipping_address1) %>
+                    <br>
+                    <%= label_tag(:user_shipping_address2, "Address 2", class: "sr-only") %>
+                    <%= text_field(:users, :user_shipping_address2, class: "form-control", placeholder: "Shipping Address 2", :value => @user.user_shipping_address2) %>
+        			<br>
+                        <div class="col-lg-6">
+                            <%= label_tag(:user_shipping_city, "City", class: "sr-only") %>
+                            <%= text_field(:users, :user_shipping_city, class: "form-control", placeholder: "City", :value => @user.user_shipping_city) %>
+                        </div>
+                        <div class="col-lg-6">                        
+                            <%= label_tag(:user_city, "Postcode", class: "sr-only") %>
+                            <%= text_field(:users, :user_shipping_zip, class: "form-control", placeholder: "Postcode", :value => @user.user_shipping_zip) %>
+                        </div>
+                        <div class="col-lg-12">
+                            <br>
+                            <%= select_tag "users[user_shipping_state]", options_from_collection_for_select(@state, "id", "state_name", @user.user_shipping_state), prompt: "Select State", :required => true, class: "form-control" %>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <%= label_tag(:user_billing_address1, "Address 1", class: "sr-only") %>
+                    <%= text_field(:users, :user_billing_address1, class: "form-control", placeholder: "Billing Address 1", :value => @user.user_billing_address1) %>
+                    <br>
+                    <%= label_tag(:user_shipping_address1, "Address 2", class: "sr-only") %>
+                    <%= text_field(:users, :user_billing_address2, class: "form-control", placeholder: "Billing Address 2", :value => @user.user_billing_address2) %>
+                    <br>
+                    <div class="col-lg-6">
+                            <%= label_tag(:user_shipping_city, "City", class: "sr-only") %>
+                            <%= text_field(:users, :user_billing_city, class: "form-control", placeholder: "City", :value => @user.user_billing_city) %>
+                        </div>
+                        <div class="col-lg-6">                        
+                            <%= label_tag(:user_city, "Postcode", class: "sr-only") %>
+                            <%= text_field(:users, :user_billing_zip, class: "form-control", placeholder: "Postcode", :value => @user.user_billing_zip) %>
+                        </div>
+                        <div class="col-lg-12">
+                            <br>
+                            <%= select_tag "users[user_billing_state]", options_from_collection_for_select(@state, "id", "state_name", @user.user_shipping_state), prompt: "Select State", :required => true, class: "form-control" %>
+                            <br>
+                        </div>
+                    <br>
+                    </div>
 
-<h3>My Info</h3>
+                    <div class="col-lg-12">
+        			     <%= button_tag "Update Personal Info", class:"btn btn-default center-block" %>
+                    </div>
+        			<% end %>
+	        	</div> <!-- form-group form-shipping -->
+        </div> <!-- panel panel-default -->
+	</div><!-- col-lg-9 -->
 
 
 
-</div>
+
+</div><!-- container 

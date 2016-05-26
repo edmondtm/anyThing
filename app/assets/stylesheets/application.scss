@@ -11,7 +11,6 @@ body{
 
 .navbar-brand{
 	margin-top: -10px;
-	padding-left: 70px;
 }
 
 .search-bar{
@@ -24,6 +23,10 @@ body{
 	margin-left: 20px;
 	margin-right: 20px;
 
+}
+
+#search{
+	width: 100%;
 }
 
 .btn-default{
@@ -48,7 +51,7 @@ body{
 
 
 .header{
-	height: 160px;	
+	
 }
 
 .header_checkout{
@@ -99,7 +102,6 @@ color: #f14504;
 
 .user-bar{
 	float: right;
-	margin-right: 80px;
 	margin-top: 30px;
 }
 
@@ -107,7 +109,6 @@ color: #f14504;
 nav{	
 	padding-left: 30px;
 	padding-top: 30px;
-
 }
 
 .product-details-picture{
@@ -173,7 +174,7 @@ nav{
 }
 
 footer{
-	background-color: #07033F;
+	background-color: #00585E;
 	padding-top: 30px;
 	color: #00A56B;
 }
@@ -184,7 +185,7 @@ footer{
 }
 
 .navbar-default {
-    background-color: #07033F;
+    background-color: #00585E;
     color: #white;
 }
 
@@ -330,20 +331,17 @@ h1,h2,h3,h4,h5 > .side-nav-bar{
 
 .checkout-panel{
 	margin-top: 50px;
-	height: 650px;
-	
+	margin-bottom: 150px;	
 }
 
 .checkout-shipping-panel{
 	margin-top: 50px;
-	height: 150px;
+	minimum-height: 150px;
 	
 }
 
 .checkout-order-summary-panel{
-	
 	height: 300px;
-	
 }
 
 .small-font{
@@ -362,4 +360,33 @@ h1,h2,h3,h4,h5 > .side-nav-bar{
 
 #change_my_info{
 	font-size: 60%;
+}
+
+.toggle-bar{
+	background-color: #00585E;
+    color: #F0EDBB;
+}
+
+.toggle-bar:link{
+	background-color: #00585E;
+    color: #F0EDBB;
+}
+
+.toggle-bar:hover {	
+	background-color: #f14504;
+	color: #FFFCC4;
+}
+
+.small-device-search-bar {
+	margin-top: 25px;
+
+}
+
+.delete{
+	font-size: 50%;
+}
+
+.delete:hover{
+	background-color: red;
+	color: yellow;
 }

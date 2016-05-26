@@ -31,6 +31,11 @@
 		<div class="col-lg-3">
 			<div class="panel panel-default checkout-shipping-panel">
   	  			<div class="panel-heading"><h4>Shipping / Billing Address <%= link_to "edit", cart_shipping_path, class:"small-font" %></h4></div>
+            <%= @user.user_shipping_address1 %><br>
+            <%= @user.user_shipping_address2 %><br>
+            <%= @user.user_shipping_zip %> <%= @user.user_shipping_city %><br>
+            <%= @state.find(@user.user_shipping_state).state_name %>
+
 			</div>	
 
 			<div class="panel panel-default ">
