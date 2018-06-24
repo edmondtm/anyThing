@@ -7,7 +7,7 @@ gem 'mysql2'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'paypal-sdk-rest'
 
-gem 'sass-rails', '>= 3.2'
+gem 'sass-rails', '>= 5.0.4'
 gem 'autoprefixer-rails'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -36,7 +36,7 @@ gem 'pry', '~> 0.10.3'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'cart', '~> 0.0.4'
-gem 'sunspot_rails'
+gem 'sunspot_rails', '>= 2.2.5'
 gem 'sunspot_solr'
 gem 'progress_bar'
 gem 'delayed_job_active_record'
@@ -61,7 +61,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.3', '>= 2.3.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
