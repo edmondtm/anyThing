@@ -4,7 +4,7 @@ gem 'rails', '4.2.5.2'
 
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.0'
 gem 'paypal-sdk-rest'
 
 gem 'sass-rails', '>= 3.2'
@@ -20,8 +20,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-ui-sass-rails'
+gem 'jquery-rails', '>= 4.3.4'
+gem 'jquery-ui-sass-rails', '>= 4.0.3.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
