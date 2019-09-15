@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'pry', '~> 0.10.3'
 gem 'will_paginate'
