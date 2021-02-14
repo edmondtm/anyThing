@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.5.2'
+gem 'rails', '6.0.3.5'
 
 gem 'mysql2'
 # Use SCSS for stylesheets
@@ -36,7 +36,7 @@ gem 'pry', '~> 0.10.3'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'cart', '~> 0.0.4'
-gem 'sunspot_rails'
+gem 'sunspot_rails', '>= 2.2.5'
 gem 'sunspot_solr'
 gem 'progress_bar'
 gem 'delayed_job_active_record'
